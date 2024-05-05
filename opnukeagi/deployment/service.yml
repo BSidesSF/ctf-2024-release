@@ -1,0 +1,23 @@
+apiVersion: v1
+kind: Service
+metadata:
+  annotations:
+    cloud.google.com/backend-config: '{"ports": {"80": "ttyd-backendconfig"}}'
+  labels:
+    app: opnukeagi-podperconn
+  name: opnukeagi-podperconn
+  namespace: podperconn
+spec:
+  loadBalancerIP: 35.185.204.198
+  ports:
+  - name: challenge
+    port: 6464
+    protocol: TCP
+    targetPort: 6464
+  - name: http
+    port: 80
+    protocol: TCP
+    targetPort: 80
+  selector:
+    app: opnukeagi-podperconn
+  type: LoadBalancer

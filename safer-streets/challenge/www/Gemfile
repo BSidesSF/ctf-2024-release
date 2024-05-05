@@ -1,0 +1,7 @@
+source 'https://rubygems.org'
+
+gem 'sinatra'
+gem 'singlogger'
+gem 'thin'
+
+gem "rackup", "~> 2.1"

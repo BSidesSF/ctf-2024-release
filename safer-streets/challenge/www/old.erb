@@ -1,0 +1,174 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+
+    <title>ROP Petting Zoo</title>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+
+    <!-- Custom styles for this template -->
+    <link href="main.css" rel="stylesheet">
+  </head>
+
+  <body>
+
+
+    <header>
+      <nav class="navbar navbar-expand navbar-dark fixed-top bg-dark">
+        <a class="navbar-brand" href="#">ROP Petting Zoo</a>
+        <ul class="navbar-nav mr-auto">
+          <li class="nav-item active"><a class="nav-link" href="#home">Home</a></li>
+          <li class="nav-item"><a class="nav-link" href="#tutorial1">Tutorial 1</a></li>
+          <li class="nav-item"><a class="nav-link" href="#level1">Level 1</a></li>
+          <li class="nav-item"><a class="nav-link" href="#tutorial2">Tutorial 2</a></li>
+          <li class="nav-item"><a class="nav-link" href="#level2">Level 2</a></li>
+          <li class="nav-item"><a class="nav-link" href="#tutorial3">Tutorial 3</a></li>
+          <li class="nav-item"><a class="nav-link" href="#level3">Level 3</a></li>
+        </ul>
+      </nav>
+    </header>
+
+
+    <div class="container-fluid">
+      <div class="row">
+
+
+        <div class="col-md-2 d-md-block bg-light sidebar">
+
+          <div class="sidebar-sticky sometimes-hidden level1 level2 level3">
+            <h6 class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-muted">
+              <span><strong>Target Function</strong></span>
+            </h6>
+
+            <ul id="target-function" class="nav flex-column">
+
+              <li class="nav-item"><a class="nav-link" href="#"><span data-feather="home"></span>Dashboard</a></li>
+            </ul>
+          </div>
+          <div class="sidebar-sticky sometimes-hidden not-home">
+            <h6 class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-muted">
+              <span>Gadgets</span>
+            </h6>
+
+            <ul class="nav flex-column" id="gadgets">
+
+              <li class="nav-item"><a class="nav-link" href="#"><span data-feather="home"></span>Dashboard</a></li>
+              <li class="nav-item"><a class="nav-link" href="#"><span data-feather="file"></span>Orders</a></li>
+            </ul>
+          </div>
+          <div class="sidebar-sticky sometimes-hidden not-home">
+            <h6 class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-muted">
+              <span>Functions</span>
+            </h6>
+
+            <ul class="nav flex-column mb-2" id="functions">
+              <li class="nav-item"><a class="nav-link" href="#"><span data-feather="file-text"></span>Current month</a></li>
+            </ul>
+          </div>
+        </div>
+
+        <main role="main" class="col-md-9 ml-sm-auto col-lg-10 pt-3 px-4 main">
+          <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pb-2 mb-3 border-bottom">
+            <h1 class="h2" id="temp-page-title">Loading...</h1>
+
+            <% levels.each do |level| %>
+              <h1 class="h2 sometimes-hidden <%=level[:name]%>"><%=level[:title]%></h1>
+            <% end %>
+          </div>
+
+          <div class="sometimes-hidden home">
+            <p>
+              Your goal is to build a call stack culminating with the Target
+              Function for the level you're calling (which you'll see at the
+              top-left when you choose a level).
+            </p>
+
+            <p>
+              The stack you build will replace the real call stack. When you
+              click "execute", we'll jump to the top address. That will execute,
+              then return to what's next on the stack. You can build a call
+              chain by having functions return to other functions. Use as many
+              gadgets as you need!
+            </p>
+
+            <p>
+              This will actually execute the real code on a real CPU, and you'll
+              see exactly what happens (including crashes).
+            </p>
+
+            <p>
+              There are three levels with three tutorials and three flags. Do
+              them in any order you like!
+            </p>
+
+            <p>
+              To begin, we suggest <a href='#tutorial1'>Tutorial 1</a>!
+            </p>
+          </div>
+
+          <% levels.each do |level| %>
+            <div class="sometimes-hidden <%=level[:name] %>">
+              <%=level[:text]%>
+            </div>
+          <% end %>
+
+          <div class="error d-none" id="error">No error</div>
+          <div class="container sometimes-hidden not-home">
+            <div class="row">
+              <div class="col-sm">
+                <h3>
+                  Stack
+                  <div class="btn-group mr-2 mb-md-0">
+                    <button class="btn btn-sm btn-success" id="execute" title="Run the ROP chain">Execute</button>
+                    <button class="btn btn-sm btn-danger" id="clear" title="Clear all entries">Clear</button>
+                  </div>
+                </h3>
+
+                <table class="table table-striped">
+                  <thead>
+                    <tr>
+                      <th scope="col">Hex (little endian)</th>
+                      <th scope="col">Hex (original)</th>
+                      <th scope="col">Desc</th>
+                    </tr>
+                  </thead>
+                  <tbody id="stack">
+                  </tbody>
+                </table>
+              </div>
+              <div class="col-sm">
+                <h3>Output</h3>
+                <div id="output" class="sometimes-hidden output">
+                  <div class="output-loading" id="output-loading">Loading...</div>
+
+                  <div id="output-output">
+                    <div class="execution-result">Result: <span id="exit-reason"></span></div>
+                    <div class="execution-stdout">Output from script: <span id="stdout"></span></div>
+                    <table class="table table-striped">
+                      <thead>
+                        <tr>
+                          <th scope="col">The following instructions executed:</th>
+                        </tr>
+                      </thead>
+                      <tbody id="instructions">
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+
+
+        </main>
+      </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.6.3.min.js" integrity="sha256-pvPw+upLPUjgMXY0G+8O0xUf+/Im1MZjXxxgOcBQBXU=" crossorigin="anonymous"></script>
+    <script src="main.js"></script>
+  </body>
+</html>
+

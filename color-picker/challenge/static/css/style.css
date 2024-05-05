@@ -1,0 +1,76 @@
+
+body {
+  background-image: none;
+}
+
+
+.main {
+  margin-top: 30px;
+}
+
+.header .header-row {
+  padding-left: 40px;
+}
+
+.container {
+  width: 100%;
+  margin: 0 auto;
+}
+
+.content {
+  border-radius: 2px;
+  padding: 80px 56px;
+  margin-bottom: 80px;
+}
+
+.content {
+  padding: 40px 28px;
+}
+
+.content h3 {
+  margin-bottom: 20px;
+}
+
+.form-group {
+  margin-bottom: 10px;
+  padding: 10px;
+}
+
+.layout {
+  height: 100%;
+  width: 100%;
+}
+
+.h3-title {
+  margin-top: 50px;
+}
+
+h5 {
+  padding: 10px;
+}
+
+.banner-img {
+  padding: 10px;
+  width: 100%;
+  display: block;
+}
+.form-select{
+  margin-top:10px;
+  margin-bottom:10px;
+  width: 300px
+}
+.color-table{
+  width: 100%;
+  padding: .5rem .5rem;
+  margin-bottom: 1rem;
+  vertical-align: top;
+  border-bottom-width: 2px;
+  border-collapse: collapse;
+  box-shadow: inset 0 0 0 9999px var(--bs-table-bg-state, var(--bs-table-bg-type, var(--bs-table-accent-bg)));
+}
+tr {
+    border-color: #e5e5e5;
+    border-style: solid;
+    border-bottom: 1px solid;
+    margin-bottom:2px;
+}

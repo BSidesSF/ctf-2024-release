@@ -1,0 +1,22 @@
+# This is the standard metadata for a challenge with a server-side component.
+# In terms of file structure, please also have the following:
+#
+# - A challenge/ folder with everything needed to create the challenge assets
+# - A distfiles/ folder which contains all files (or symlinks to files) that
+#   will be attached to the challenge
+# - A solution/ folder with a working solution to the challenge (or a README.md
+#   file documenting the solution)
+
+version: 'beta1'
+name: 'badgy'
+author: 'ron'
+flag: 'CTF{1+1+2+1}'
+description: |
+  Trade with a CTF organizer badge!
+  "https://youtu.be/O5ROhf5Soqs?si=i6hfhmkCozKUIbma"
+value: 50
+min_value: 50
+tags:
+  - 'On-Site'
+notes: |
+  Private notes on deployment, setup, etc.

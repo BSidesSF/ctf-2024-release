@@ -1,0 +1,12 @@
+# Deployment Steps
+
+## For Android
+* Set-up a publisher topic called "wishing-well"
+* Create a service account key with Publisher and Subscriber permissions 
+* Export the service account key and replace the one in app/assets/key.json 
+* Test the app end to end 
+* Rebuild the app and update the distfiles 
+
+## For Cloud function
+* Set-up a cloud function to publish the flag to the topic 
+* Set-up a cloud scheduler set to "* * * * *" using default compute engine account to trigger the cloud function

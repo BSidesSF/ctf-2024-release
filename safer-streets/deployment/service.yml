@@ -1,0 +1,16 @@
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    app: safer-streets
+  name: safer-streets
+  namespace: default
+spec:
+  ports:
+  - name: challenge
+    port: 8080
+    protocol: TCP
+    targetPort: 8080
+  selector:
+    app: safer-streets
+  type: NodePort

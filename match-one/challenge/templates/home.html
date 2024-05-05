@@ -1,0 +1,42 @@
+<html>
+
+<head>
+    <title> Memory Match </title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/bootstrap.min.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+</head>
+<!-- Based on https://github.com/code-sketch/memory-game -->
+<body class="home-body">
+    <div class="container">
+        <div class="col-lg-8 col-md-7 col-sm-6">
+            <h1> Memory Match Game </h1>
+            <p class="lead">Don't get any pairs wrong, make sure you only flip over matching tiles.</p>
+            <p class="lead">Caution: Round will reset if you refresh!</p>
+            <div>
+                <h2>Score: {{ user.score }} </h2>
+            </div>
+        </div>
+        {% if msg != "" %}
+        <div class="outcome alert alert-info">
+            <strong> {{ msg }} </strong>
+        </div>
+        {% endif %}
+        <a href="/flag" class="btn btn-secondary btn-large btn-block"> Get flag! </a>
+        
+            <form action="/round">  
+                <section class="memory-game">
+                    {% for card in cards %}
+                        <div class="memory-card" data-id="{{ loop.index - 1}}" data-value="{{card}}">
+                            <img class="front-face" src="{{ url_for('static', filename='images/' + card + '.png') }}" alt="BSidesSF" />
+                            <img class="back-face" src="{{ url_for('static', filename='images/back.png') }}" alt="{{card}}" />
+                        </div>
+                    {% endfor %}    
+                </section>
+            </form>       
+        
+    </div>
+    <script src="{{ url_for('static', filename='js/jquery-3.7.1.min.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/card.js') }}"></script>
+</body>
+
+</html>

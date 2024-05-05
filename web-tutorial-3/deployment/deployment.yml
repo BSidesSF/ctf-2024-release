@@ -1,0 +1,84 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: web-tutorial-3
+    tier: challenge
+  name: web-tutorial-3
+  namespace: default
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: web-tutorial-3
+  template:
+    metadata:
+      annotations:
+        apparmor.security.beta.kubernetes.io/defaultProfileName: runtime/default
+      labels:
+        app: web-tutorial-3
+        networkpolicy: allow_egress
+        tier: challenge
+    spec:
+      automountServiceAccountToken: false
+      containers:
+      - env: []
+        image: us-west1-docker.pkg.dev/bsides-sf-ctf-2024/challenges/web-tutorial-3:20240428-234902
+        name: web-tutorial-3
+        ports:
+        - containerPort: 8000
+          protocol: TCP
+        resources:
+          limits:
+            cpu: '1'
+            memory: 1Gi
+          requests:
+            cpu: 50m
+            memory: 32Mi
+        securityContext:
+          allowPrivilegeEscalation: false
+          capabilities:
+            add: []
+          runAsNonRoot: true
+        volumeMounts:
+        - mountPath: /xss-three-flag
+          name: web-tutorial-3-flag-secret-vol
+          readOnly: true
+          subPath: xss-three-flag
+      - env:
+        - name: DEBUG
+          value: 'true'
+        - name: COOKIES
+          value: admin=c79063148aa0ddc7b6f8116be9b93f5a341ee9ae;URL=https://web-tutorial-3-d1d398dd.challenges.bsidessf.net/;httpOnly
+        - name: PORT
+          value: '3000'
+        image: us-west1-docker.pkg.dev/bsides-sf-ctf-2024/challenges/webbot:latest
+        name: webbot
+        resources:
+          limits:
+            cpu: '1'
+            memory: 512Mi
+          requests:
+            cpu: 80m
+            memory: 128Mi
+        securityContext:
+          capabilities:
+            add:
+            - SYS_ADMIN
+      enableServiceLinks: false
+      securityContext:
+        seccompProfile:
+          type: RuntimeDefault
+      volumes:
+      - name: web-tutorial-3-flag-secret-vol
+        secret:
+          secretName: web-tutorial-3-flag-secret
+---
+apiVersion: v1
+data:
+  xss-three-flag: !!binary |
+    UTFSR2UyUmhkRFF0ZFhJeGN5MWhjak10WW1GamEzMD0=
+kind: Secret
+metadata:
+  name: web-tutorial-3-flag-secret
+type: Opaque

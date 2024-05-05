@@ -1,0 +1,17 @@
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    app: turing-complete
+  name: turing-complete
+  namespace: default
+spec:
+  loadBalancerIP: 35.227.191.102
+  ports:
+  - name: challenge
+    port: 1954
+    protocol: TCP
+    targetPort: 1954
+  selector:
+    app: turing-complete
+  type: LoadBalancer

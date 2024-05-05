@@ -1,0 +1,35 @@
+VERSION 0.7
+FROM debian:bookworm
+WORKDIR /src
+
+RUN apt-get update
+
+deps:
+  RUN apt-get -yy install build-essential liblzma-dev
+
+build:
+  FROM +deps
+  COPY *.h .
+  COPY *.c .
+  COPY Makefile .
+  COPY liblzma.a .
+  RUN make CFLAGS=-DMAC_DEBUG
+  SAVE ARTIFACT xzsupply.dbg AS LOCAL xzsupply.mac
+  RUN make clean
+  RUN make
+  SAVE ARTIFACT xzsupply AS LOCAL xzsupply
+
+docker:
+  RUN apt-get -y install tini
+  RUN useradd -u 1000 ctf
+  BUILD +build
+  COPY +build/xzsupply /xzsupply
+  USER 1000
+
+  EXPOSE 6666/tcp
+  ENTRYPOINT ["/usr/bin/tini"]
+  CMD ["/xzsupply"]
+  ARG CVERSION=local-build
+  SAVE IMAGE \
+    us-west1-docker.pkg.dev/bsides-sf-ctf-2024/challenges/xzsupply:latest \
+    us-west1-docker.pkg.dev/bsides-sf-ctf-2024/challenges/xzsupply:${CVERSION}

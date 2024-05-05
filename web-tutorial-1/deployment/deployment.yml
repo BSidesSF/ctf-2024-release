@@ -1,0 +1,84 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: web-tutorial-1
+    tier: challenge
+  name: web-tutorial-1
+  namespace: default
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: web-tutorial-1
+  template:
+    metadata:
+      annotations:
+        apparmor.security.beta.kubernetes.io/defaultProfileName: runtime/default
+      labels:
+        app: web-tutorial-1
+        networkpolicy: allow_egress
+        tier: challenge
+    spec:
+      automountServiceAccountToken: false
+      containers:
+      - env: []
+        image: us-west1-docker.pkg.dev/bsides-sf-ctf-2024/challenges/web-tutorial-1:20240428-033545
+        name: web-tutorial-1
+        ports:
+        - containerPort: 8000
+          protocol: TCP
+        resources:
+          limits:
+            cpu: '1'
+            memory: 1Gi
+          requests:
+            cpu: 50m
+            memory: 32Mi
+        securityContext:
+          allowPrivilegeEscalation: false
+          capabilities:
+            add: []
+          runAsNonRoot: true
+        volumeMounts:
+        - mountPath: /xss-one-flag
+          name: web-tutorial-1-flag-secret-vol
+          readOnly: true
+          subPath: xss-one-flag
+      - env:
+        - name: DEBUG
+          value: 'true'
+        - name: COOKIES
+          value: admin=a9c34919feb87e179b6e42a88d87de011555bf1b;URL=https://web-tutorial-1-ed930da1.challenges.bsidessf.net/;httpOnly
+        - name: PORT
+          value: '3000'
+        image: us-west1-docker.pkg.dev/bsides-sf-ctf-2024/challenges/webbot:latest
+        name: webbot
+        resources:
+          limits:
+            cpu: '1'
+            memory: 512Mi
+          requests:
+            cpu: 80m
+            memory: 128Mi
+        securityContext:
+          capabilities:
+            add:
+            - SYS_ADMIN
+      enableServiceLinks: false
+      securityContext:
+        seccompProfile:
+          type: RuntimeDefault
+      volumes:
+      - name: web-tutorial-1-flag-secret-vol
+        secret:
+          secretName: web-tutorial-1-flag-secret
+---
+apiVersion: v1
+data:
+  xss-one-flag: !!binary |
+    UTFSR2UzUnllUzAxTUcxbExWaFROWDA9
+kind: Secret
+metadata:
+  name: web-tutorial-1-flag-secret
+type: Opaque

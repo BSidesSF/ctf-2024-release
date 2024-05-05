@@ -1,0 +1,16 @@
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    app: business-expense
+  name: business-expense
+  namespace: default
+spec:
+  ports:
+  - name: challenge
+    port: 5000
+    protocol: TCP
+    targetPort: 5000
+  selector:
+    app: business-expense
+  type: NodePort

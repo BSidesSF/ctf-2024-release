@@ -1,0 +1,48 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: cant-give-in
+    tier: challenge
+  name: cant-give-in
+  namespace: default
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: cant-give-in
+  template:
+    metadata:
+      annotations:
+        apparmor.security.beta.kubernetes.io/defaultProfileName: runtime/default
+      labels:
+        app: cant-give-in
+        networkpolicy: allow_egress
+        tier: challenge
+    spec:
+      automountServiceAccountToken: false
+      containers:
+      - env: []
+        image: us-west1-docker.pkg.dev/bsides-sf-ctf-2024/challenges/cant-give-in:20240429-022134
+        name: cant-give-in
+        ports:
+        - containerPort: 8080
+          protocol: TCP
+        resources:
+          limits:
+            cpu: '1'
+            memory: 1Gi
+          requests:
+            cpu: 50m
+            memory: 32Mi
+        securityContext:
+          allowPrivilegeEscalation: false
+          capabilities:
+            add: []
+          runAsNonRoot: true
+        volumeMounts: []
+      enableServiceLinks: false
+      securityContext:
+        seccompProfile:
+          type: RuntimeDefault
+      volumes: []

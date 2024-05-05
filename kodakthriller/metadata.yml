@@ -1,0 +1,21 @@
+# This is the standard metadata for a challenge with a server-side component.
+# In terms of file structure, please also have the following:
+#
+# - A challenge/ folder with everything needed to create the challenge assets
+# - A distfiles/ folder which contains all files (or symlinks to files) that
+#   will be attached to the challenge
+# - A solution/ folder with a working solution to the challenge (or a README.md
+#   file documenting the solution)
+
+version: 'beta1'
+name: 'kodakthriller'
+author: 'symmetric & itsc0rg1'
+flag: 'CTF{thefirstlawofaiisobeyhumans}'
+description: |
+  A prankster claiming to be "from the future" keeps mailing film negatives to our editor. Can you make any sense of their insanity?
+  (note enter flag as CTF{<alllowercasenospaces>})
+value: 1000 # Leave this as 1000 unless you have a reason to change it
+tags:
+  - 'Crypto'
+notes: |
+  Private notes on deployment, setup, etc.

@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard</title>
+
+    <link rel="stylesheet" href="static/style.css">
+    <script defer src="static/source.js"></script>
+</head>
+
+<body>
+    <h1>Expenses Dashboard</h1>
+
+    <table class="editable" id="table">
+	    <thead>
+		<tr>
+			<th class="expense">
+				Expense Name
+			</th>
+			<th class="cost">
+				Cost
+			</th>
+			<th class="currency">
+				Currency Type
+			</th>
+			<th>
+				Remove Row
+			</th>
+		</tr>
+	    </thead>
+	    <tbody>
+		    {% for v in table_data %}
+		    <tr>
+			<td>
+				{{ v.expense | safe}}
+			</td>
+			<td>
+				{{ v.cost }}
+			</td>
+			<td>
+				{{ v.currency | safe}}
+			</td>
+			<td class="static">
+				<button class="static remove">x</button>
+			</td>
+			{% endfor %}
+	    </tbody>
+
+    </table>
+
+    <b>Status</b>: <div id="status" style="display: inline-block;"></div>
+
+    <br>
+
+    <button id="addrow">Add Row</button>
+    <button id="save">Save</button>
+    <button id="submit">Submit For Approval</button>
+
+
+    <script>
+	table = document.getElementById("expense-table");
+
+    </script>
+
+    <br>
+
+    <a href="{{url_for('logout')}}">Press here to logout</a>
+
+</body>
+
+</html>

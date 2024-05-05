@@ -1,0 +1,4 @@
+Just adjust levels and the flag becomes easily readible through the
+black marker.
+
+CTF{censor_this}

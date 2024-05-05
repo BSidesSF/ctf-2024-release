@@ -1,0 +1,4 @@
+flask
+flask-csp
+requests
+flask-talisman

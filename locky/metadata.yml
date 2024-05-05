@@ -1,0 +1,27 @@
+# This is the standard metadata for a challenge with a server-side component.
+# In terms of file structure, please also have the following:
+#
+# - A challenge/ folder with everything needed to create the challenge assets
+# - A distfiles/ folder which contains all files (or symlinks to files) that
+#   will be attached to the challenge
+# - A solution/ folder with a working solution to the challenge (or a README.md
+#   file documenting the solution)
+
+version: beta1
+name: Locky
+author: Matir/symmetric
+flag: 'rockt3hlock'
+description: |
+  This challenge requires being on-site.  Come unlock our challenge lock and
+  get a flag!
+  
+  Challenge is located on the table in the front row of the CTF room in front of
+  the organizers.
+value: 100
+min_value: 100
+tags:
+  - On-Site
+notes: Private notes on deployment, setup, etc.
+managed: false
+scoring:
+  flag_type: nonce

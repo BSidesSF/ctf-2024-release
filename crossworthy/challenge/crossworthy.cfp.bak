@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<CROSSFIRE>
+    <VERSION>1</VERSION>
+    <TITLE/>
+    <AUTHOR/>
+    <COPYRIGHT/>
+    <GRID width="12">
+NTH..MOB.SCS
+OOO..ILL.HIT
+OOP..BEEFALO
+BLINK..NADIR
+...LOSTDREAM
+...PIPE.....
+.....ANDA...
+WORKAROOM...
+ANAIS..SPITS
+TINAFEY..NOT
+CCC.OVA..TOO
+HEH.ROW..STP
+</GRID>
+    <CIRCLES>0,13,26,39,52,65,78,91,104,117,130,143</CIRCLES>
+    <WORDS>
+        <WORD dir="ACROSS" id="0" isTheme="false" num="1">To the ___ degree</WORD>
+        <WORD dir="ACROSS" id="1" isTheme="false" num="4">Computer-controlled NPC, usually an enemy</WORD>
+        <WORD dir="ACROSS" id="2" isTheme="false" num="7">American Truck Simulator studio</WORD>
+        <WORD dir="ACROSS" id="3" isTheme="false" num="10">Not at work (abbr.)</WORD>
+        <WORD dir="ACROSS" id="4" isTheme="false" num="11">Sick</WORD>
+        <WORD dir="ACROSS" id="5" isTheme="false" num="12">Didn't miss</WORD>
+        <WORD dir="ACROSS" id="6" isTheme="false" num="13">Programming technique that isn't procedural (abbr.)</WORD>
+        <WORD dir="ACROSS" id="7" isTheme="false" num="14">Portmonteau creature from Don't Starve</WORD>
+        <WORD dir="ACROSS" id="8" isTheme="false" num="16">____-182</WORD>
+        <WORD dir="ACROSS" id="9" isTheme="false" num="19">Lowpoint</WORD>
+        <WORD dir="ACROSS" id="10" isTheme="false" num="20">It'll never happen</WORD>
+        <WORD dir="ACROSS" id="11" isTheme="false" num="23">|</WORD>
+        <WORD dir="ACROSS" id="12" isTheme="false" num="24">___ _ partridge in a pear tree</WORD>
+        <WORD dir="ACROSS" id="13" isTheme="false" num="27">Interact with the crowd</WORD>
+        <WORD dir="ACROSS" id="14" isTheme="false" num="32">Diarist Nin, famous for her presence in crossword puzzles</WORD>
+        <WORD dir="ACROSS" id="15" isTheme="false" num="33">Drizzles, in Canada</WORD>
+        <WORD dir="ACROSS" id="16" isTheme="false" num="37">"30 Rock" creator</WORD>
+        <WORD dir="ACROSS" id="17" isTheme="false" num="40">"!", in logic</WORD>
+        <WORD dir="ACROSS" id="18" isTheme="false" num="41">Annual infosec conference in Germany (abbr.)</WORD>
+        <WORD dir="ACROSS" id="19" isTheme="false" num="42">Virtual appliance extension</WORD>
+        <WORD dir="ACROSS" id="20" isTheme="false" num="43">Also</WORD>
+        <WORD dir="ACROSS" id="21" isTheme="false" num="44">A small laugh</WORD>
+        <WORD dir="ACROSS" id="22" isTheme="false" num="45">One database entry</WORD>
+        <WORD dir="ACROSS" id="23" isTheme="false" num="46">Nominal conditions in the atmosphere at sea level (abbr.)</WORD>
+        <WORD dir="DOWN" id="24" isTheme="false" num="1">Derogatory term for an inexperienced player</WORD>
+        <WORD dir="DOWN" id="26" isTheme="false" num="2">General term for a program that helps with a specific task</WORD>
+        <WORD dir="DOWN" id="28" isTheme="false" num="3">People of Arizona</WORD>
+        <WORD dir="DOWN" id="34" isTheme="false" num="4">Will Smith/Tommy Lee Jones sci-fi hit (abbr.)</WORD>
+        <WORD dir="DOWN" id="37" isTheme="false" num="5">Cry at a football (soccer?) match</WORD>
+        <WORD dir="DOWN" id="40" isTheme="false" num="6">Will it _____?</WORD>
+        <WORD dir="DOWN" id="44" isTheme="false" num="7">Throw _____</WORD>
+        <WORD dir="DOWN" id="46" isTheme="false" num="8">Small hairs</WORD>
+        <WORD dir="DOWN" id="48" isTheme="true" num="9">With 27d, weekly podcast from GreyNoise Intelligence</WORD>
+        <WORD dir="DOWN" id="42" isTheme="false" num="15">Not near</WORD>
+        <WORD dir="DOWN" id="30" isTheme="false" num="17">Machine learning technology related to interpreting and understanding words (abbr.)</WORD>
+        <WORD dir="DOWN" id="32" isTheme="false" num="18">A fish in a pond (or the pond!)</WORD>
+        <WORD dir="DOWN" id="35" isTheme="false" num="21">Practice boxing</WORD>
+        <WORD dir="DOWN" id="38" isTheme="false" num="22">Between nine o'clock and eleven o'clock, it's ___ _'clock</WORD>
+        <WORD dir="DOWN" id="41" isTheme="false" num="25">16-bit operating system from Microsoft</WORD>
+        <WORD dir="DOWN" id="43" isTheme="false" num="26">Win___ music player</WORD>
+        <WORD dir="DOWN" id="25" isTheme="true" num="27">See 9d</WORD>
+        <WORD dir="DOWN" id="27" isTheme="false" num="28">If it's not neat, it might be served __ ___</WORD>
+        <WORD dir="DOWN" id="29" isTheme="false" num="29">Popular American dressing</WORD>
+        <WORD dir="DOWN" id="31" isTheme="false" num="30">Korean car brand</WORD>
+        <WORD dir="DOWN" id="33" isTheme="false" num="31">"But __ ___ me, give me liberty..."</WORD>
+        <WORD dir="DOWN" id="45" isTheme="false" num="34">Numeric values in programming (plural)</WORD>
+        <WORD dir="DOWN" id="47" isTheme="false" num="35">Mastodon post (or sound!)</WORD>
+        <WORD dir="DOWN" id="49" isTheme="false" num="36">Don't go</WORD>
+        <WORD dir="DOWN" id="36" isTheme="false" num="38">Fighting game tournament</WORD>
+        <WORD dir="DOWN" id="39" isTheme="false" num="39">Roll, pitch, and ___</WORD>
+    </WORDS>
+    <NOTES/>
+</CROSSFIRE>

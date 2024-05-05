@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+        <meta name="description" content="" />
+        <meta name="author" content="" />
+        <title>Core Web Access</title>
+        <!-- Core theme CSS (includes Bootstrap)-->
+        <link href="/static/css/styles.css" rel="stylesheet" />
+    </head>
+    <body>
+        <!-- Responsive navbar-->
+        <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+            <div class="container">
+                <a class="navbar-brand" href="#">Core Web Access</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+                        <li class="nav-item" id="menu-home"><a class="nav-link" href="/">Home</a></li>
+                        <li class="nav-item" id="menu-login"><a class="nav-link" href="/login">Login</a></li>
+                        <li class="nav-item hidden" id="menu-logout"><a
+                            class="nav-link d-none" href="/logout">Logout</a></li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+        <!-- Page content-->
+        <div class="container" id="body-home">
+            <div class="text-center mt-5">
+                <h1>Core Web Access</h1>
+                <p class="lead">An authenticated file serving experience.</p>
+                <p>While we work on better documentation, guest access for
+                <b>globally readable</b> files is available. (Username guest,
+                password guest)</p>
+            </div>
+        </div>
+        <div class="container d-none" id="body-login">
+            <div class="text-center mt-5">
+                <form id="login-form">
+                  <h1 class="h3 mb-3 fw-normal">Please sign in</h1>
+                  <div class="form-floating">
+                    <input class="form-control" name="username"
+                                  id="login-username" placeholder="guest">
+                    <label for="login-username">Username</label>
+                  </div>
+                  <div class="form-floating">
+                    <input type="password" class="form-control"
+                                           id="login-password" placeholder="Password" name="password">
+                    <label for="login-password">Password</label>
+                  </div>
+                  <button id="login-submit" class="w-100 btn btn-lg btn-primary" type="submit">Sign in</button>
+                </form>
+            </div>
+        </div>
+        <div class="container d-none" id="body-files">
+            <div class="text-center mt-5">
+                <h1>Files</h1>
+                <table id="file-table" class="table">
+                  <thead>
+                    <tr>
+                      <th scope="col">Filename</th>
+                      <th scope="col">Size</th>
+                      <th scope="col">ACL</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                  </tbody>
+                </table>
+            </div>
+        </div>
+        <div class="container d-none" id="body-notfound">
+            <div class="text-center mt-5">
+                <h1>404 Not Found</h1>
+                <p class="lead">The requested page was not found.</p>
+            </div>
+        </div>
+        <!-- Bootstrap core JS-->
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
+        <!-- Core theme JS-->
+        <script src="/static/js/scripts.js"></script>
+    </body>
+</html>

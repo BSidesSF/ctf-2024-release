@@ -1,0 +1,24 @@
+# This is the standard metadata for a challenge with a server-side component.
+# In terms of file structure, please also have the following:
+#
+# - A challenge/ folder with everything needed to create the challenge assets
+# - A distfiles/ folder which contains all files (or symlinks to files) that
+#   will be attached to the challenge
+# - A solution/ folder with a working solution to the challenge (or a README.md
+#   file documenting the solution)
+
+version: 'beta1'
+name: 'Turing Incomplete 64'
+author: 'ron'
+flag: 'CTF{hero}'
+description: |
+  This is the same as Turing Complete, but compiled as 64-bit instead of 32. Good luck!
+
+  In case it helps, we attached a copy of the system's libc.so library!
+value: 1000 # Leave this as 1000 unless you have a reason to change it
+tags:
+  - 'RE'
+  - 'Pwn'
+port: 1954
+protocol: 'tcp' # accepted: http, https, tcp, udp
+flag_path: '/home/ctf/flag.txt' # Optional; but helpful for players

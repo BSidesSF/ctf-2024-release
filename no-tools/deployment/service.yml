@@ -1,0 +1,23 @@
+apiVersion: v1
+kind: Service
+metadata:
+  annotations:
+    cloud.google.com/backend-config: '{"ports": {"80": "ttyd-backendconfig"}}'
+  labels:
+    app: no-tools-podperconn
+  name: no-tools-podperconn
+  namespace: podperconn
+spec:
+  loadBalancerIP: 34.82.127.22
+  ports:
+  - name: challenge
+    port: 4445
+    protocol: TCP
+    targetPort: 4445
+  - name: http
+    port: 80
+    protocol: TCP
+    targetPort: 80
+  selector:
+    app: no-tools-podperconn
+  type: LoadBalancer

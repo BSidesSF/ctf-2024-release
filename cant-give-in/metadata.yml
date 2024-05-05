@@ -1,0 +1,26 @@
+# This is the standard metadata for a challenge with a web component.
+# In terms of file structure, please also have the following:
+#
+# - A challenge/ folder with everything needed to create the challenge assets
+# - A distfiles/ folder which contains all files (or symlinks to files) that
+#   will be attached to the challenge
+# - A solution/ folder with a working solution to the challenge (or a README.md
+#   file documenting the solution)
+
+version: 'beta1'
+name: "Can't Give In"
+author: 'ron'
+flag: 'CTF{certified-genuine-instructions}'
+description: |
+  Can you get a shell?
+
+  *Note: the binary should have an executable stack and minimal hardening, the goal is RCE*
+value: 1000 # Leave this as 1000 unless you have a reason to change it
+tags:
+  - 'Pwn'
+  - '101'
+# This *must* be the port on which your service is listening inside the
+# container.  It *must* also return 200 for a GET / HTTP/1.1.
+port: 8080
+protocol: 'tcp' # accepted: http, https, tcp, udp
+flag_path: '/home/ctf/flag.txt' # Optional; but helpful for players

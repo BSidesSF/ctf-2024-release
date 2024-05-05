@@ -1,0 +1,35 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>BSidesSF CTF</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/bootstrap.min.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+  </head>
+  <body>
+    <div class="layout">
+      <nav class="header navbar navbar-expand-lg fixed-top navbar-dark bg-primary">
+        <div class="container-fluid">
+          <span class="navbar-brand">Web Tutorial 1</span>
+        </div>
+      </nav>
+      <main class="main">
+        <div class="container">
+          <div class="content">
+            <h3 class="h3-title">Web Tutorial 1 Output</h3>
+            <div>
+              <b>You entered:</b><br/>
+              {{ payload }} <br/>
+            </div>
+            <div>
+              Rendered as: </b><br/>
+              {% autoescape false %}
+              {{ payload }}
+            {% endautoescape %}
+          </div>
+        </div>
+      </div>
+    </main>
+  </div>
+</body>
+</html>

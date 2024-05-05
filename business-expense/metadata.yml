@@ -1,0 +1,31 @@
+# This is the standard metadata for a challenge with a web component.
+# In terms of file structure, please also have the following:
+#
+# - A challenge/ folder with everything needed to create the challenge assets
+# - A distfiles/ folder which contains all files (or symlinks to files) that
+#   will be attached to the challenge
+# - A solution/ folder with a working solution to the challenge (or a README.md
+#   file documenting the solution)
+
+version: 'release'
+name: 'business-expense'
+author: 'Matthias Penner'
+flag: 'CTF{v3ry_3xp3n51v3}'
+description: |
+  Just a simple business expense management system. Unfortunately, getting the flag is far from simple. Use all the features you have (or shouldn't have) at your disposal to get a reverse shell and grab the flag!
+value: 1000 # Leave this as 1000 unless you have a reason to change it
+tags:
+  - 'Web'
+# This *must* be the port on which your service is listening inside the
+# container.  It *must* also return 200 for a GET / HTTP/1.1.
+port: 5000
+protocol: 'http' # accepted: http, https, tcp, udp
+notes: |
+  Private notes on deployment, setup, etc.
+replicas: 1
+
+webbot:
+  cookies:
+    - "session=.eJwtjktqAzEQRO-itRfqltQfX2aQ-kOCIYEZe2V892iR5asqivcuR55xfZX783zFrRzfXu4FmmfF8DGl6wAb3KxT8mKtMIU3r7oiTQamV20xWBKEnL2S4-41MnMRJINwYkxH7kxLZwCozAZozdGqGhNmTwvvge5728sWeV1x_ttstOvM4_n7iJ8drJ6txjaZDSehTdjfnRggVZVtkchiGeXzB_diPz4.Zi2z4w.43JW_JRYjdx_uGhT9MAL7F2qMMY;URL=https://%(hostname)s/admin;httpOnly"
+  urls:
+    - "http://127.0.0.1:5000/admin"

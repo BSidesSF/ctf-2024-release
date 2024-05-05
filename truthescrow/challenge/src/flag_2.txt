@@ -1,0 +1,1 @@
+CTF{half_a_d_is_too_much_d}

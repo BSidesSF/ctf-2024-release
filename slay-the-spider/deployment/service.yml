@@ -1,0 +1,17 @@
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    app: slay-the-spider
+  name: slay-the-spider
+  namespace: default
+spec:
+  loadBalancerIP: 35.197.50.105
+  ports:
+  - name: challenge
+    port: 4441
+    protocol: TCP
+    targetPort: 4441
+  selector:
+    app: slay-the-spider
+  type: LoadBalancer

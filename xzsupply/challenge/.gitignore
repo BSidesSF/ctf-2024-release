@@ -1,0 +1,4 @@
+*.o
+xzsupply
+xzsupply.dbg
+!liblzma.a

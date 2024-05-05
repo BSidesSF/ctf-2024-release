@@ -1,0 +1,70 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: business-expense
+    tier: challenge
+  name: business-expense
+  namespace: default
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: business-expense
+  template:
+    metadata:
+      annotations:
+        apparmor.security.beta.kubernetes.io/defaultProfileName: runtime/default
+      labels:
+        app: business-expense
+        networkpolicy: allow_egress
+        tier: challenge
+    spec:
+      automountServiceAccountToken: false
+      containers:
+      - env: []
+        image: us-west1-docker.pkg.dev/bsides-sf-ctf-2024/challenges/business-expense:20240502-233611
+        name: business-expense
+        ports:
+        - containerPort: 5000
+          protocol: TCP
+        resources:
+          limits:
+            cpu: '1'
+            memory: 1Gi
+          requests:
+            cpu: 50m
+            memory: 32Mi
+        securityContext:
+          allowPrivilegeEscalation: false
+          capabilities:
+            add: []
+          runAsNonRoot: true
+        volumeMounts: []
+      - env:
+        - name: DEBUG
+          value: 'true'
+        - name: COOKIES
+          value: session=.eJwtjktqAzEQRO-itRfqltQfX2aQ-kOCIYEZe2V892iR5asqivcuR55xfZX783zFrRzfXu4FmmfF8DGl6wAb3KxT8mKtMIU3r7oiTQamV20xWBKEnL2S4-41MnMRJINwYkxH7kxLZwCozAZozdGqGhNmTwvvge5728sWeV1x_ttstOvM4_n7iJ8drJ6txjaZDSehTdjfnRggVZVtkchiGeXzB_diPz4.Zi2z4w.43JW_JRYjdx_uGhT9MAL7F2qMMY;URL=https://business-expense-14bece99.challenges.bsidessf.net/admin;httpOnly
+        - name: TARGET_URIS
+          value: http://127.0.0.1:5000/admin
+        - name: PORT
+          value: '3000'
+        image: us-west1-docker.pkg.dev/bsides-sf-ctf-2024/challenges/webbot:latest
+        name: webbot
+        resources:
+          limits:
+            cpu: '1'
+            memory: 512Mi
+          requests:
+            cpu: 80m
+            memory: 128Mi
+        securityContext:
+          capabilities:
+            add:
+            - SYS_ADMIN
+      enableServiceLinks: false
+      securityContext:
+        seccompProfile:
+          type: RuntimeDefault
+      volumes: []

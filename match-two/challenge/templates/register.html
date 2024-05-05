@@ -1,0 +1,41 @@
+<html>
+
+<head>
+    <title> Memory Match </title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/bootstrap.min.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+</head>
+
+<body class="text-center form-body">
+    <div class="box border-secondary">
+        <form action="/register" method="POST" class="form-signin">
+            <img class="mb-4" src="{{ url_for('static', filename='images/logo.png') }}" alt=""
+                width="120" height="120">
+            <h1 class="h3 mb-3 font-weight-normal card-title">Memory Match</h1>
+            <div class="group">
+                {{ form.username(class_='form-control',placeholder="Username") }}<span class="highlight"></span><span
+                    class="bar"></span>
+                {% if form.username.errors %}
+                <ul class="error">{% for error in form.username.errors %}<li>{{ error }}</li>{% endfor %}</ul>
+                {% endif %}
+            </div>
+            <div class="group">
+                {{ form.password(class_='form-control',placeholder="Password") }}<span class="highlight"></span><span
+                    class="bar"></span>
+                {% if form.password.errors %}
+                <ul class="errors">{% for error in form.password.errors %}<li>{{ error }}</li>{% endfor %}</ul>
+                {% endif %}
+            </div>
+            <div class="group">
+                {{ form.confirm(class_='form-control form-end',placeholder="Confirm Password") }}<span
+                    class="highlight"></span><span class="bar"></span>
+                {% if form.confirm.errors %}
+                <ul class="error">{% for error in form.confirm.errors %}<li>{{ error }}</li>{% endfor %}</ul>
+                {% endif %}
+            </div>
+            {{ form.submit(class_='btn btn-lg btn-primary btn-block') }}
+        </form>
+    </div>
+</body>
+
+</html>

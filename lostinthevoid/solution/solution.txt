@@ -1,0 +1,120 @@
+# xfs_db thevoid.xfs
+
+xfs_db> path /void_dread.jpg
+xfs_db> print
+core.magic = 0x494e
+core.mode = 0100644
+core.version = 3
+core.format = 2 (extents)
+core.onlink = 0
+core.uid = 0
+core.gid = 0
+core.nlinkv2 = 1
+core.projid_lo = 0
+core.projid_hi = 0
+core.atime.sec = Fri Apr 12 03:54:45 2024
+core.atime.nsec = 332967668
+core.mtime.sec = Fri Apr 12 03:52:33 2024
+core.mtime.nsec = 203624284
+core.ctime.sec = Fri Apr 12 03:52:33 2024
+core.ctime.nsec = 203624284
+core.size = 9223372032559808513
+core.nblocks = 1080
+core.extsize = 0
+core.nextents = 3
+core.naextents = 0
+core.forkoff = 0
+core.aformat = 2 (extents)
+core.dmevmask = 0
+core.dmstate = 0
+core.newrtbm = 0
+core.prealloc = 0
+core.realtime = 0
+core.immutable = 0
+core.append = 0
+core.sync = 0
+core.noatime = 0
+core.nodump = 0
+core.rtinherit = 0
+core.projinherit = 0
+core.nosymlinks = 0
+core.extsz = 0
+core.extszinherit = 0
+core.nodefrag = 0
+core.filestream = 0
+core.gen = 1200067358
+next_unlinked = null
+v3.crc = 0x56dda616 (correct)
+v3.change_count = 13
+v3.lsn = 0x100000036
+v3.flags2 = 0x8
+v3.cowextsize = 0
+v3.crtime.sec = Fri Apr 12 03:19:44 2024
+v3.crtime.nsec = 993323940
+v3.inumber = 169
+v3.uuid = 8fca407a-ed4a-40b5-973b-40721cfd556a
+v3.reflink = 0
+v3.cowextsz = 0
+v3.dax = 0
+v3.bigtime = 1
+v3.nrext64 = 0
+u3.bmx[0-2] = [startoff,startblock,blockcount,extentflag] 
+0:[0,3852,101,0] 
+1:[1125899042816000,4035,978,0] 
+2:[2251799812636672,4019,1,0]
+
+# via seeking a mounted file
+brenrigh@lambda ~ $ dd if=/mnt/other/void_dread.jpg bs=4096 skip=1125899042816000 count=978 | hexdump -vC | head
+00000000  89 00 50 00 4e 00 47 00  0d 00 0a 00 1a 00 0a 00  |..P.N.G.........|
+00000010  00 00 00 00 00 00 0d 00  49 00 48 00 44 00 52 00  |........I.H.D.R.|
+00000020  00 00 00 00 04 00 00 00  00 00 00 00 05 00 04 00  |................|
+00000030  08 00 02 00 00 00 00 00  00 00 cd 00 99 00 f5 00  |................|
+00000040  76 00 00 00 1e 00 8d 00  99 00 49 00 44 00 41 00  |v.........I.D.A.|
+00000050  54 00 78 00 da 00 dc 00  fd 00 69 00 ac 00 6d 00  |T.x.......i...m.|
+00000060  5b 00 76 00 1e 00 86 00  ad 00 39 00 57 00 df 00  |[.v.......9.W...|
+00000070  ec 00 e6 00 74 00 b7 00  79 00 7d 00 bd 00 7a 00  |....t...y.}...z.|
+00000080  af 00 5a 00 b2 00 c8 00  12 00 41 00 91 00 34 00  |..Z.......A...4.|
+00000090  44 00 32 00 a2 00 6c 00  89 00 a6 00 13 00 d8 00  |D.2...l.........|
+
+# just pulling the extent out of the filesystem image directly
+$ dd if=thevoid.xfs bs=4096 skip=4035 count=978 | hexdump -vC | head
+00000000  89 00 50 00 4e 00 47 00  0d 00 0a 00 1a 00 0a 00  |..P.N.G.........|
+00000010  00 00 00 00 00 00 0d 00  49 00 48 00 44 00 52 00  |........I.H.D.R.|
+00000020  00 00 00 00 04 00 00 00  00 00 00 00 05 00 04 00  |................|
+00000030  08 00 02 00 00 00 00 00  00 00 cd 00 99 00 f5 00  |................|
+00000040  76 00 00 00 1e 00 8d 00  99 00 49 00 44 00 41 00  |v.........I.D.A.|
+00000050  54 00 78 00 da 00 dc 00  fd 00 69 00 ac 00 6d 00  |T.x.......i...m.|
+00000060  5b 00 76 00 1e 00 86 00  ad 00 39 00 57 00 df 00  |[.v.......9.W...|
+00000070  ec 00 e6 00 74 00 b7 00  79 00 7d 00 bd 00 7a 00  |....t...y.}...z.|
+00000080  af 00 5a 00 b2 00 c8 00  12 00 41 00 91 00 34 00  |..Z.......A...4.|
+00000090  44 00 32 00 a2 00 6c 00  89 00 a6 00 13 00 d8 00  |D.2...l.........|
+
+
+
+# Note nulls have been inserted every other byte (in the odd byte locations).
+# They can be removed with a simple script:
+
+#!/usr/bin/perl
+
+use strict;
+use warnings;
+
+my $data;
+open (IN, $ARGV[0]) or die 'Unable to open file: ', $!, "\n";
+{
+    local $/ = undef;
+    $data  = <IN>;
+}
+close IN;
+
+
+my @bytes = unpack('C*', $data);
+my $p = 0;
+foreach my $b (@bytes) {
+    print pack('C', $b) if ($p == 0);
+    $p ^= 1;
+}
+
+
+# Nulls were added to prevent automated file-carving that look for
+# magic values or else the PNG would be found instantly

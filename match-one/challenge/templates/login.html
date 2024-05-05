@@ -1,0 +1,34 @@
+<html>
+
+<head>
+    <title> Memory Match </title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/bootstrap.min.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+</head>
+
+<body class="text-center form-body">
+    <div class="box border-secondary">
+        <form action="/login" method="POST" class="form-signin">
+            <img class="mb-4" src="{{ url_for('static', filename='images/logo.png') }}" alt=""
+                width="120" height="120">
+            <h1 class="h3 mb-3 font-weight-normal card-title">Memory Match</h1>
+            <span class="message-block">
+                {% with messages = get_flashed_messages(with_categories=true) %}
+                {% if messages %}
+                <ul class="flashes">
+                    {% for category, message in messages %}
+                    <li class="{{ category }}">{{ message }}</li>
+                    {% endfor %}
+                </ul>
+                {% endif %}
+                {% endwith %}
+            </span>
+            {{ form.username(class_='form-control',placeholder="Username") }}
+            {{ form.password(class_='form-control form-end',placeholder="Password") }}
+            {{ form.submit(class_='btn btn-lg btn-primary btn-block') }}
+            <span class="register-link"> New user? <a href="/register" class="link-primary">Sign up here.</a> </span>
+        </form>
+    </div>
+</body>
+
+</html>

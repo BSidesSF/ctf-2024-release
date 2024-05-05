@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>Color Picker</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="{{ url_for('static', filename='css/bootstrap.min.css') }}">
+        <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    </head>
+    <body>
+        <div class="layout">
+            <nav class="header navbar navbar-expand-lg fixed-top navbar-dark bg-primary">
+                <div class="container-fluid">
+                    <span class="navbar-brand">Color Picker</span>
+                </div>
+            </nav>
+            <main class="main">
+                <div class="container">
+                    <div class="content">
+                        <h1>Here are some cool colors</h1>
+                        <table class="color-table">
+                            <tbody>
+                                {% for row in colors %}
+                                    <tr>
+                                        {% for col in row %}
+                                            {% if loop.index == 3 %}
+                                                <td> {{ col }} </td>
+                                                <td bgcolor='{{ col }}' width="30px"></td>
+                                            {% else %}
+                                                <td>{{ col }}</td>
+                                            {% endif %}
+                                        {% endfor %}
+                                    </tr>
+                                {% endfor %}
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </main>
+        </body>
+    </html>

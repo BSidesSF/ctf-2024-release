@@ -1,0 +1,17 @@
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    app: cant-give-in-securer
+  name: cant-give-in-securer
+  namespace: default
+spec:
+  loadBalancerIP: 104.199.118.212
+  ports:
+  - name: challenge
+    port: 8080
+    protocol: TCP
+    targetPort: 8080
+  selector:
+    app: cant-give-in-securer
+  type: LoadBalancer

@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Admin Panel | NeuralCorp</title>
+	<link rel="stylesheet" href="static/admin-panel-styles.css">
+</head>
+<body>
+	<header>
+		<h1>Admin Panel</h1>
+	</header>
+	<main>
+		{% for url in urls %}
+		<div class="iframe-container">
+			<iframe src="{{ url }}" frameborder="0"></iframe>
+			<div class="action-buttons">
+				<button class="approve">Approve</button>
+				<button class="deny">Deny</button>
+			</div>
+		</div>
+		{% endfor %}
+	</main>
+</body>
+</html>

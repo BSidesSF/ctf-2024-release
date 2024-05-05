@@ -1,0 +1,74 @@
+apiVersion: v1
+kind: ServiceAccount
+metadata:
+  name: meow-podperconn
+  namespace: podperconn
+---
+apiVersion: v1
+data:
+  container.yml: "apiVersion: apps/v1\nkind: Deployment\nmetadata:\n  labels:\n  \
+    \  app: meow\n    tier: challenge\n  name: meow\n  namespace: podperconn\nspec:\n\
+    \  replicas: 1\n  selector:\n    matchLabels:\n      app: meow\n  template:\n\
+    \    metadata:\n      annotations:\n        apparmor.security.beta.kubernetes.io/defaultProfileName:\
+    \ runtime/default\n      labels:\n        app: meow\n        networkpolicy: allow_egress\n\
+    \        tier: challenge\n    spec:\n      automountServiceAccountToken: false\n\
+    \      containers:\n      - env: []\n        image: us-west1-docker.pkg.dev/bsides-sf-ctf-2024/challenges/meow:20240424-003544\n\
+    \        name: meow\n        ports:\n        - containerPort: 4445\n         \
+    \ protocol: TCP\n        resources:\n          limits:\n            cpu: '1'\n\
+    \            memory: 1Gi\n          requests:\n            cpu: 50m\n        \
+    \    memory: 32Mi\n        securityContext:\n          allowPrivilegeEscalation:\
+    \ false\n          capabilities:\n            add: []\n          runAsNonRoot:\
+    \ true\n        volumeMounts: []\n      enableServiceLinks: false\n      securityContext:\n\
+    \        seccompProfile:\n          type: RuntimeDefault\n      volumes: []\n"
+kind: ConfigMap
+metadata:
+  name: meow-podperconn-configs
+  namespace: podperconn
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: meow-podperconn
+  name: meow-podperconn
+  namespace: podperconn
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: meow-podperconn
+  template:
+    metadata:
+      labels:
+        app: meow-podperconn
+    spec:
+      containers:
+      - command:
+        - /opt/podperconn
+        - --deployment=/config/container.yml
+        - --namespace=podperconn
+        - --listen-port=4445
+        image: docker.io/matir/podperconn:latest
+        name: podperconn
+        ports:
+        - containerPort: 4445
+        volumeMounts:
+        - mountPath: /config
+          name: configs
+      - command:
+        - ttyd
+        - --writable
+        - --port
+        - '80'
+        - socat
+        - file:/dev/tty,raw,echo=0
+        - tcp:127.0.0.1:4445
+        image: us-west1-docker.pkg.dev/bsides-sf-ctf-2024/challenges/ttyd:latest
+        name: ttyd
+        ports:
+        - containerPort: 80
+      serviceAccountName: meow-podperconn
+      volumes:
+      - configMap:
+          name: meow-podperconn-configs
+        name: configs

@@ -1,0 +1,14 @@
+Image encrypted with ECB.
+
+Opend in image editor in raw mode and play around with width and color
+settings until patterns start appearing.
+
+Correct color is RGBA (4 bytes per pixel)
+Correct width is 2048
+
+If you use RGB instead then text is still easily readable with width
+2730 or 2731 (these are 4/3rds of 2048)
+
+
+CTF{are_my_blocks_showing}
+

@@ -1,0 +1,17 @@
+{
+  "root": "../files",
+  "static_dir": "./static",
+  "protected": {
+    "flag.txt": {
+      "group": "admin"
+    }
+  },
+  "signing_key": "x1ILC20diFvoSxRBRZxseB3QYlvMQTo73qA3QK6fGGg=",
+  "users": {
+    "admin": "l3a2vNUba3MfOQQabkiikg#6moifrvcIWTOeAv44VpcTE7Fz78MPbrQ+Mrq/rN6C9A",
+    "guest": "bmiJ4K6y/7XH7sFSfc2lzA#1+99n+dxPO/odxXpbEZgrm35SUHX8I2pxavVS7lVHvc"
+  },
+  "groups": {
+    "admin": ["admin"]
+  }
+}

@@ -1,0 +1,111 @@
+Hey symmetric here! I'm the one you can blame for most of the crypto
+and forensics challenges... sorry :-D
+
+Every year I make some sort of FAT filesystem "forensics" challenge
+where there is a deleted file you have to recover. This year I thought
+I'd change things up and make it something of a 101-level tutorial.
+
+I won't walk you through everything step-by-step but I will give you
+plenty of information and ideas which should help you get started.
+
+You should see a file 1,474,560 `floppy.img` which is the same format
+as an old 1.44MB 3.5 inch floppy disk. The disk had one file on it,
+`flag.png` which has been deleted. Nothing else was written to the
+disk which will make your life easier if you want to use "file
+carving" to recover the image.
+
+Using `fls` from "The Sleuth Kit" (TSK) you can get a file listing:
+
+$ fls floppy.img
+r/r 3:	undelete    (Volume Label Entry)
+r/r * 5:	flag.png
+v/v 45779:	$MBR
+v/v 45780:	$FAT1
+v/v 45781:	$FAT2
+V/V 45782:	$OrphanFiles
+
+Here * means the file is delete and 5 is the inode number.
+
+Using `icat` from The Sleuth Kit you can extract inode 5:
+
+$ icat -r -v floppy.img 5 > /tmp/flag.png
+
+
+Alternatively, you could use file carving tricks. This assumes the
+file isn't fragmented (which it isn't). `binwalk` can identify the PNG
+header offset:
+
+$ binwalk -v floppy.img
+
+Scan Time:     2024-04-24 05:47:31
+Target File:   floppy.img
+MD5 Checksum:  57589322b451f34610c5aebfebcd4eec
+Signatures:    411
+
+DECIMAL       HEXADECIMAL     DESCRIPTION
+--------------------------------------------------------------------------------
+17408         0x4400          PNG image, 570 x 450, 8-bit/color RGB, non-interlaced
+17449         0x4429          Zlib compressed data, best compression
+
+
+Unfortunately binwalk doesn't understand the PNG header well enough to
+tell you the overall file size. You can have binwalk extract the file
+for you using something like:
+
+$ binwalk -v --dd='png' -C /tmp/ floppy.img
+
+However binwalk extracts way past the end of the PNG. The image will
+still open in most image editors though so it isn't a huge issue for
+solving this challenge specifically.
+
+If you want to find the end of the image yourself you could start
+extracting the file with dd where binwalk said it was and check for
+the "IEND" PNG section:
+
+$ dd if=floppy.img bs=17408 skip=1 | hexdump -vC | less
+
+After paging down a bunch you can see the end:
+
+000075d0  0f 3c 78 49 00 57 8d fd  ba fe 07 ba fa cf f1 13  |.<xI.W..........|
+000075e0  f0 0f 0f 3c f0 c0 03 0f  3c 78 61 00 49 0d e1 e0  |...<....<xa.I...|
+000075f0  e0 e0 e0 e0 f0 09 fc 3f  a5 a5 09 71 8e 03 ef 25  |.......?...q...%|
+00007600  00 00 00 00 49 45 4e 44  ae 42 60 82 00 00 00 00  |....IEND.B`.....|
+00007610  00 00 00 00 00 00 00 00  00 00 00 00 00 00 00 00  |................|
+00007620  00 00 00 00 00 00 00 00  00 00 00 00 00 00 00 00  |................|
+00007630  00 00 00 00 00 00 00 00  00 00 00 00 00 00 00 00  |................|
+
+You can see the run of nulls starts at 0x760c which is hex for 30220 bytes.
+
+Now that you have the size you can extract it exactly with dd:
+
+$ dd if=floppy.img bs=1 skip=17408 count=30220 of=/tmp/flag.png
+30220+0 records in
+30220+0 records out
+30220 bytes (30 kB, 30 KiB) copied, 0.0275151 s, 1.1 MB/s
+
+
+Instead of using binwalk you could look for some basic PNG bytes and their offsets:
+
+$ egrep -o -a -b 'PNG|IHDR|IEND' floppy.img
+9800:PNG
+17409:PNG
+17420:IHDR
+47620:IEND
+
+Here the PNG followed by IHDR only 11 bytes away followend by IEND
+gives you a very good idea of where the image is located on the floppy
+and approximately how big it is.
+
+
+Another useful file carving tool is `photorec` which can automatically
+find and extract the PNG.
+
+If you're feeling really adventurous you could write your own file
+carver that understands enough of the PNG format to identify the
+header and read the section sizes. Alternatively you could learn
+enough of how the FAT12 filesystem works that you can identify deleted
+files and extract out their contents (if they haven't been
+overwritten). Unfortunately FAT12 is a bit too complicated for this to
+be a very good idea for a simple CTF challenge :-)
+
+Good luck!

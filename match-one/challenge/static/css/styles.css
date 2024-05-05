@@ -1,0 +1,184 @@
+html,
+body {
+  height: 100%;
+}
+
+.home-body {
+	background-color: #ecf0f1;
+  padding: 100;
+}
+
+.game-header {
+    max-width: 700px;
+}
+
+
+.btn-block{
+	display: block;
+	margin-top: 10px;
+	padding: 10px;
+	width: 100%;
+  margin-bottom: 10px;
+}
+
+.btn-submit{
+    background-color: #6f42c1;
+}
+
+.error-img{
+	width: 300px;
+}
+
+.alert-info{
+	background-color: #c2c7c5;
+	color: black;
+}
+
+.form-body {
+  display: -ms-flexbox;
+  display: -webkit-box;
+  display: flex;
+  -ms-flex-align: center;
+  -ms-flex-pack: center;
+  -webkit-box-align: center;
+  align-items: center;
+  -webkit-box-pack: center;
+  justify-content: center;
+  padding-top: 40px;
+  padding-bottom: 40px;
+  background-color: #ecf0f1;
+}
+
+.box {
+	margin:0 auto; 
+	padding:50px;
+	background:#b8a6c5;
+	border:2px solid #30115e;
+}
+
+.register-link{
+	display: block;
+	padding: 1em;
+}
+
+
+ .form-signin {
+  width: 100%;
+  max-width: 330px;
+  padding: 15px;
+  margin: 0 auto;
+}
+
+.form-signin .checkbox {
+  font-weight: 400;
+}
+
+.form-signin .form-control {
+  position: relative;
+  box-sizing: border-box;
+  height: auto;
+  padding: 10px;
+  font-size: 16px;
+  margin: 2px
+}
+
+.form-signin .form-control:focus {
+  z-index: 2;
+}
+
+.form-signin input[type="email"] {
+  margin-bottom: -1px;
+  border-bottom-right-radius: 0;
+  border-bottom-left-radius: 0;
+}
+
+.form-signin-password input[type="password"] {
+  border-top-left-radius: 0;
+  border-top-right-radius: 0;
+}
+
+.form-end{
+	margin-bottom: 10px;
+}
+
+.error {
+	color: red;
+	list-style-type: none; /* Remove bullets */
+}
+
+.outcome {
+  margin-top: 10px;
+  padding: 10;
+  background-color: #1ba2f6;
+  text-align: center;
+  color: #ffffff;
+}
+
+.message {
+	color: green;
+	list-style-type: none; /* Remove bullets */
+}
+
+.card-title .register-link {
+  color: #1a0933;
+  text-shadow: none;
+}
+
+.container {
+    max-width: 960px;
+    display:flex;
+    justify-content:flex-start;
+    flex-direction: column; 
+}
+
+.memory-game {
+  width: 740px;
+  height: 640px;
+  margin: auto;
+  display: flex;
+  flex-wrap: wrap;
+  perspective: 1000px;
+}
+
+.memory-card {
+  width: calc(25% - 10px);
+  height: calc(30% - 10px);
+  margin: 5px;
+  position: relative;
+  transform: scale(1);
+  transform-style: preserve-3d;
+  transition: transform .5s;
+  box-shadow: 1px 1px 1px rgba(0,0,0,.3);
+  cursor: pointer;
+}
+
+.memory-card.flip {
+  -webkit-transform: rotateY( 180deg );
+  -moz-transform: rotateY( 180deg );
+  -o-transform: rotateY( 180deg );
+  transform: rotateY( 180deg );
+}
+
+.memory-card .front-face,
+.memory-card .back-face {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  backface-visibility: hidden;
+}
+
+.moemory-card .front-face {
+  -webkit-transform: rotateY( 180deg );
+  -moz-transform: rotateY( 180deg );
+  -o-transform: rotateY( 180deg );
+  transform: rotateY( 180deg );
+}
+
+.memory-card:active {
+  transform: scale(0.97);
+  transition: transform .2s;
+}
+
+.front-face {
+  transform: rotateY(180deg);
+}

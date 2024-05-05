@@ -1,0 +1,27 @@
+# This is the standard metadata for a challenge with a server-side component.
+# In terms of file structure, please also have the following:
+#
+# - A challenge/ folder with everything needed to create the challenge assets
+# - A distfiles/ folder which contains all files (or symlinks to files) that
+#   will be attached to the challenge
+# - A solution/ folder with a working solution to the challenge (or a README.md
+#   file documenting the solution)
+
+version: 'beta1'
+name: 'Safer Streets'
+author: 'ron'
+flag: 'CTF{show-me-your-best-images}'
+description: |
+  For the safety of all, we've installed brand new license-plate scanners throughout the city! Check it out, but no speeding!
+
+  *Note 1: If you gain access to a binary, it's compiled on `debian:bookworm` with the libraries `libmagickwand-dev`, `libmagickcore-dev`, and `libzbar-dev`*
+
+  *Note 2: Run `/home/ctf/print-flag` to get the flag.
+value: 1000 # Leave this as 1000 unless you have a reason to change it
+tags:
+  - 'Web'
+  - 'Pwn'
+port: 8080
+protocol: 'http' # accepted: http, https, tcp, udp
+
+replicas: 1 # I expect people will solve this by writing a file then reading it

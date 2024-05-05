@@ -1,0 +1,13 @@
+{
+  "type": "service_account",
+  "project_id": "bsides-sf-ctf-2023",
+  "private_key_id": "b945bcd5e002e88cd8423d22f21fdbba88eb7e7e",
+  "private_key": "-----BEGIN PRIVATE KEY-----\nMIIEugIBADANBgkqhkiG9w0BAQEFAASCBKQwggSgAgEAAoIBAQC7602gbbjT0L3L\n9GNeNo2Up3AYaAHtAu6V4SxKeRv44eCFMaphj0Atq2cgdlufAaV/baPzW30EXlU4\nMHIl9Lri2ZYfPt0wAr/4Kfk5iWpDkv6T4Wtyzbda98u3vzuE11oteAtGhL3W55J/\ndKLOStYTu5a+w9pV7oP2vwuAL8aOWY69EBInZxRQaiYCQ7Lz5BieIPbUCgSQKx59\nv8ZHXbjX8gYMgnLeByiqt3N5kJr9tk7Zuw77QPqfVBio+0ZlBNAfGtmXusijxtY8\nkW094Jrmwgs0PQn7D/35UTydkY3enHrQ1mCbWwlFJrBMENuZDSBC1cbRwRB7V3kC\n4Yf1gbERAgMBAAECgf8Wn6pUK2PW0e9W0BcWL7sp0D2IxUvqbAMkkq/MRStIEvLe\nLYExEEHFGIy+qk36l0Dhrl7eXviKnvhTPhIsP6XJk7jTeLjKH8vKwF7RuPaQZR8h\nqMvFEZVO5MP1G8pdJ6ULhl07jPrzMeN+n8y7HRMCeouH/7dUiwPGt3S4YjH5LHPO\nFeXEHi7yfccYju5hCzFgW9+chAtHaljjeSAZY4f3S7h8q2w5lzlGG4qfw9I95m45\ntlGVZhEZUB0X6rAaR731LoB7qeUqSIg3n0VH5uY/470JP3HzQR2VIllk8nBcwn4Z\nyMCONfwyeq5dVu9htlKkfKhRktiBEwZ/xPD+YwECgYEA4HoQE3Sw1qrKkk+vm+BU\n8Rr6X3EP8M1nGmQgIEPPHqD4NXQtaTrfnRevwxDgEmiYhzTT19lQMam0r1EYAJeR\nO03V5f7oYRq2DqzHIg5u1Oq2lcBadATql+2LCuv+8ZJ3EhyhxFKU/CdV/k1b8nOj\nNhZXVtZmM2Oulfn4UbJiUoECgYEA1k7+UAJ0g15c03CpC7jo2Tq4r8JcQJ6v8G8o\nt3D8gIBWaEm7Go8WwUYDbWT+KNEe6l/aLpQQCxH+hsIpdsLS3QLVkaHBDD/A2vaB\ni5b4hBuWEGAoqhnxR07/8QIxXCFEa/8FmZhFuRTmHOmjHJS4WgqVgXkHiBTx3hod\naYoJ9pECgYAPGueeB4omx9NdyRLuEEhm+QPEDF2gPJIlintG8IktbHOHVUwA+r81\nWPSw0Z/iXTt2Ta27ppno3ZyU94X/9DMHpJMyKNcGQb/ieOnldscqeKjUpt7vU61d\nj9R9ZagAJXTxuQ+BoHT6CsOUmywGwpVG/HXgGAlEh/6lhO6awMAxAQKBgAyQQPRr\n0GzLIWH73s0jH/NsL9uN516abvIHcjme1A6sd2RRvjhGXy0hb54AJ6445DkVOXM1\nluMvQN6hj1C5ByeRvPd2phyTuDid7uZCCXulKlz3ZirirnRhuztjx4UBJkO2hZuF\ng8Df6sWTJM7OISiWKkGW2MwvfiZpHYRMZV0hAoGAKI8sj/sg8KumEmqeVmpBw3Hl\nyrKVqKQkLpJgjagXJMsZV+GpsPs2de+cT5CrRqcQWHa79sdMfFRErfwLfcyC7LgG\nxL1WaYYidpRGcm4z4y44co0GJeECR8Ol0algs0CzCNQHZebFUrMWPtoTBvNTHsse\nvYR4/dwYcdXYJZGc0LA=\n-----END PRIVATE KEY-----\n",
+  "client_email": "color-picker-sevice-account@bsides-sf-ctf-2023.iam.gserviceaccount.com",
+  "client_id": "100010424772264244303",
+  "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+  "token_uri": "https://oauth2.googleapis.com/token",
+  "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+  "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/color-picker-sevice-account%40bsides-sf-ctf-2023.iam.gserviceaccount.com",
+  "universe_domain": "googleapis.com"
+}

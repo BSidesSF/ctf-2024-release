@@ -1,0 +1,23 @@
+# This is the standard metadata for a challenge with a server-side component.
+# In terms of file structure, please also have the following:
+#
+# - A challenge/ folder with everything needed to create the challenge assets
+# - A distfiles/ folder which contains all files (or symlinks to files) that
+#   will be attached to the challenge
+# - A solution/ folder with a working solution to the challenge (or a README.md
+#   file documenting the solution)
+
+version: beta1
+name: 'No Tools'
+author: ron
+flag: 'CTF{where-are-my-tools}'
+description: "The flag is in /home/ctf/flag.txt, but where'd all the tools go???"
+value: 1000
+tags:
+  - 'Terminal'
+  - '101'
+port: 4445
+protocol: tcp # accepted: http, https, tcp, udp
+flag_path: /home/ctf/flag.txt # Optional; but helpful for players
+notes: 'n/a'
+use_podperconn: true # required to be deployed as a terminal challenge

@@ -1,0 +1,23 @@
+{
+  "root": "/opt/cwa/files",
+  "static_dir": "./static",
+  "protected": {
+    "flag.txt": {
+      "group": "admin"
+    },
+    "README.txt": {
+      "public": true
+    },
+    "core": {
+      "public": true
+    }
+  },
+  "signing_key": "x1ILC25diFvoSxRCRZxseB4QYlvMQTO73qB3QK6fGGg=",
+  "users": {
+    "admin": "l3a2vNUba3MfOQQabkiikg#6moifrvcIWTOeAv44VpcTE7Fz78MPbrQ+Mrq/rN6C9A",
+    "guest": "bmiJ4K6y/7XH7sFSfc2lzA#1+99n+dxPO/odxXpbEZgrm35SUHX8I2pxavVS7lVHvc"
+  },
+  "groups": {
+    "admin": ["admin"]
+  }
+}

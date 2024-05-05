@@ -1,0 +1,13 @@
+#!/bin/bash -eu
+set -o pipefail
+
+cd $HOME
+
+cat << EOF
+Welcome to BSidesSF 2024 CtF - Terminal Challenges!
+
+I'm not kitten around, just take a look to find the flag.
+
+The current working directory is: $PWD
+You are logged in as: $(whoami)
+EOF
