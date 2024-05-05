@@ -4,4 +4,4 @@ Flask_Login==0.6.2
 Flask_SQLAlchemy==3.0.2
 Flask_WTF==1.0.1
 WTForms==2.2.1
-Werkzeug==2.2.2
+Werkzeug==2.3.8
