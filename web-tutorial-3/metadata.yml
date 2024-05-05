@@ -1,0 +1,28 @@
+# This is the standard metadata for a challenge with a web component.
+# In terms of file structure, please also have the following:
+#
+# - A challenge/ folder with everything needed to create the challenge assets
+# - A distfiles/ folder which contains all files (or symlinks to files) that
+#   will be attached to the challenge
+# - A solution/ folder with a working solution to the challenge (or a README.md
+#   file documenting the solution)
+
+version: beta1
+name: web-tutorial-3
+author: itsc0rg1
+flag: 'CTF{dat4-ur1s-ar3-back}'
+description: |
+  Can you use XSS one more time to steal the flag from the admin?
+value: 1000
+tags:
+  - Web
+  - "101"
+port: 8000
+protocol: http
+flag_path: /xss-three-flag
+webbot:
+  port: 3000
+  cookies:
+    - "admin=c79063148aa0ddc7b6f8116be9b93f5a341ee9ae;URL=https://%(hostname)s/;httpOnly"
+notes: XSS challenge needs webbot
+mount_flag_secret: true

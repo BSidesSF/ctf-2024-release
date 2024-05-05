@@ -1,0 +1,6 @@
+<resources>
+    <string name="app_name">Shinji</string>
+    <string name="app_string">It is not the right time!</string>
+    <string name="part_one">CTF{</string>
+    <string name="part_three">}</string>
+</resources>

@@ -1,0 +1,7 @@
+rm /home/ctf/.profile
+rm /usr/bin/*
+
+echo
+echo "Some \e[31mjoker\e[0m rm -rf'd my binaries!! Luckily, the flag's just sitting"
+echo "in \e[34m/home/ctf/flag.txt\e[0m - can you read it using \e[34msh\e[0m built-in functions?"
+echo

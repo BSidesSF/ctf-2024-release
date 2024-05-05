@@ -1,0 +1,17 @@
+Flag is in a zTXt chunk at the end of the PNG.
+
+You could decode is using
+https://www.w3.org/TR/PNG-Chunks.html
+
+Or just run exiftool:
+
+$ exiftool out.png
+ExifTool Version Number         : 12.76
+File Name                       : out.png
+[...]
+Palette                         : (Binary data 24 bytes, use -b option to extract)
+Warning                         : [minor] Text/EXIF chunk(s) found after PNG IDAT (may be ignored by some readers)
+Flag                            : CTF{zhis_zis_zhe_zlag}
+Image Size                      : 994x317
+Megapixels                      : 0.315
+

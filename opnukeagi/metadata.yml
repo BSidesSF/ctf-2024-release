@@ -1,0 +1,25 @@
+# This is the standard metadata for a challenge with a server-side component.
+# In terms of file structure, please also have the following:
+#
+# - A challenge/ folder with everything needed to create the challenge assets
+# - A distfiles/ folder which contains all files (or symlinks to files) that
+#   will be attached to the challenge
+# - A solution/ folder with a working solution to the challenge (or a README.md
+#   file documenting the solution)
+
+version: 'beta1'
+name: 'opnukeagi'
+author: 'symmetric'
+flag: 'CTF{comrade_agi_kaput}'
+description: |
+  Comrade, you're our last chance to stop the AGI. If your mission to infiltrate the nuclear missile silo fails all hope will be lost.
+
+value: 1000 # Leave this as 1000 unless you have a reason to change it
+tags:
+  - 'Crypto'
+  - 'Terminal'
+notes: |
+  Private notes on deployment, setup, etc.
+port: 6464
+protocol: 'tcp' # accepted: http, https, tcp, udp
+use_podperconn: true # required to be deployed as a terminal challenge

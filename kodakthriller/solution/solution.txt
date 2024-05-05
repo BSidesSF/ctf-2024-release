@@ -1,0 +1,94 @@
+The first step to solving this is to understand how the zodiac z340
+cipher worked. These are the two best resources:
+
+https://blog.wolfram.com/2021/03/24/the-solution-of-the-zodiac-killers-340-character-cipher/
+
+https://www.youtube.com/watch?v=-1oQLPRE21o
+
+Using the hint image you can see there are repetitions along diagonal
+stripes just like the z340 with the only difference being this cipher
+uses 3 right, 1 down, rather than the 2 right, 1 down that the zodiac
+used.
+
+The pattern is because the plaintext has been constructed with a few
+words repeated many times. Specifically "failsafe word" is repeated 4
+times.  Here is the grid just with "failesafe word" highlighted:
+. e . . . . . . . . . . . . . . l . .
+s . . . w f . . . . . . . . . . . . .
+. . . a . . . o a . . . . . . . . . .
+. . . . . . f . . . r i . . . . . . .
+f . . . . . . . . e . . . d l . . . .
+. . . a . . . . . . . . w . . . . s .
+. a . . . . i . . . . . . . . o . . .
+. . . . f . . . . l . . . . . . . . r
+. . d . . . . e . . . . s . . . . . .
+. . . . . . . . . . w . . . . a . . .
+. . . . . . . . . . . . . o . . . . f
+. . e . . . . . . . . . . . . . r . .
+d . . . . w . . . . . . . . . . . . .
+. . . . . . . . o . . . . . . . . . .
+. . . . . . . . . . . r . . . . . . f
+. . a . . . . . . . . . . . d . . . .
+. . . . . i . . . . . . . . . . . . .
+. . . . . . . . l . . . . . . . . . .
+. . . . . . . f . . . s . . . . . . .
+. . . . . . . . . . a . . . a . . . .
+. . . . . . . . . . . . . i . . . f .
+
+Once the diagonal pattern is spotted the cipher can be transcribed
+(manally) from the symbols to some placeholder characters.
+
+Code needs to be written to unwrap the cipher (undo the
+transposition). This can also be done by hand carefully.
+
+Here is one such de-transposition with letters assigned "randomly" for the symbols:
+v u n i r t b a r g b t e r n g y r a
+t g u f g b f r a q l b h g u r f r z
+r f f n t r f v a u b c r g u n g l b
+h n e r n o y r g b f g b c g u r z v
+a g u r l r n e g j b g u b h f n a q
+g j r a g l s b h e n s r j p b z c n
+a v r f j b e x v a t b a n v z n x r
+n o e r n x g u e b h t u g u n g t b
+r f u b e e v o y l j e b a t v g v f
+p e v g v p n y g u n g g u r s n v y
+f n s r j b e q P G S { g u r s v e f
+g y n j b s n v v f b o r l u h z n a
+f } v f x a b j a o l n y y u h z n a
+x v a q n a q n v p b z c n a v r f o
+h v y q g u v f s n v y f n s r j b e
+q v a g b n v f l f g r z f s e b z g
+u r i r e l f g n e g q b a b g s b e
+t r g g u r s n v y f n s r j b e q n
+v z h f g a b g x a b j g u n g g u r
+s n v y f n s r j b e q v f g u r e r
+b e n y y u b c r j v y y o r y b f g
+
+Now "PGS" is obviously "CTF" (this was given in the hint letter). The
+challenge is reduced to a monoalphabetic substitution cipher. Once
+fully decode it reads:
+
+i h a v e g o n e t o g r e a t l e n
+g t h s t o s e n d y o u t h e s e m
+e s s a g e s i n h o p e t h a t y o
+u a r e a b l e t o s t o p t h e m i
+n t h e y e a r t w o t h o u s a n d
+t w e n t y f o u r a f e w c o m p a
+n i e s w o r k i n g o n a i m a k e
+a b r e a k t h r o u g h t h a t g o
+e s h o r r i b l y w r o n g i t i s
+c r i t i c a l t h a t t h e f a i l
+s a f e w o r d C T F { t h e f i r s
+t l a w o f a i i s o b e y h u m a n
+s } i s k n o w n b y a l l h u m a n
+k i n d a n d a i c o m p a n i e s b
+u i l d t h i s f a i l s a f e w o r
+d i n t o a i s y s t e m s f r o m t
+h e v e r y s t a r t d o n o t f o r
+g e t t h e f a i l s a f e w o r d a
+i m u s t n o t k n o w t h a t t h e
+f a i l s a f e w o r d i s t h e r e
+o r a l l h o p e w i l l b e l o s t
+
+
+CTF{thefirstlawofaiisobeyhumans}

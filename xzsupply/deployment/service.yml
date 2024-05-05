@@ -1,0 +1,17 @@
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    app: xzsupply
+  name: xzsupply
+  namespace: default
+spec:
+  loadBalancerIP: 35.233.143.87
+  ports:
+  - name: challenge
+    port: 6666
+    protocol: TCP
+    targetPort: 6666
+  selector:
+    app: xzsupply
+  type: LoadBalancer

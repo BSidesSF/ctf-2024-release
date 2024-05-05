@@ -1,0 +1,16 @@
+<html>
+
+<head>
+    <title> Color Picker </title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/bootstrap.min.css') }}">
+</head>
+
+<body class="text-center form-body">
+    <div class="box">
+        <img class="error-img" src="{{ url_for('static', filename='images/oops.gif') }}" />
+        <h4> {{ error }} </h4>
+        <a href="/home">Return home</a>
+    </div>
+</body>
+
+</html>

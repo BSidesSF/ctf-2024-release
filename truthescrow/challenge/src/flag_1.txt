@@ -1,0 +1,1 @@
+CTF{we_are_the_oprah_of_private_key_bits}

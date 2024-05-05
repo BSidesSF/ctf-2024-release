@@ -1,0 +1,2 @@
+$ java -jar JavAI.docx
+CTF{javai_java_with_100x_ai}

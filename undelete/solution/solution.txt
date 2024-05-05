@@ -1,0 +1,6 @@
+This is a 101 challenge with a "walkthrough" included in the tar.
+
+The easiest solution on a system with TSK is:
+
+icat -r -v floppy.img 5 > /tmp/flag.png
+

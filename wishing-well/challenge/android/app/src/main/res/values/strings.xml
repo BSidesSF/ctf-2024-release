@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">WishingWell</string>
+    <string name="app_banner">Wishing Well</string>
+    <string name="wish_label">Enter your wish</string>
+    <string name="wish_text">Your wish</string>
+    <string name="wish_button">Send your wish</string>
+</resources>

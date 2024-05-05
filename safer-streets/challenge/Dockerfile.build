@@ -1,0 +1,13 @@
+FROM debian:bookworm
+MAINTAINER "Ron Bowes"
+
+# Install all the tools
+RUN apt update
+#RUN apt search imagemagick
+RUN apt install -y make gcc python3 libmagickwand-dev libmagickcore-dev libzbar-dev
+
+# We're going to mount the source here
+RUN mkdir /src
+WORKDIR /src
+
+CMD ["make", "indocker"]

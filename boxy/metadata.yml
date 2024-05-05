@@ -1,0 +1,39 @@
+## Documented metadata.yml
+
+# REQUIRED
+# Version of metadata, currently only beta1 is supported.
+version: beta1
+
+# REQUIRED
+# Name of challenge on scoreboard
+name: boxy
+
+# Author of challenge
+author: symmetric
+
+# REQUIRED
+# Flag for challenge
+flag: "YouCrackedTheCode"
+
+# REQUIRED
+# Description for scoreboard
+description: |
+  Boxy A and Boxy B are two identical lockboxes in the conference area.
+  Come decode the combination lock on them for the flag!
+  
+  Note: in-person only
+
+# REQUIRED
+# Point value (max points for dynamic scoring)
+value: 50
+min_value: 50
+# List of tags, must match tags defined in config.yml
+tags:
+  - On-Site
+
+# Scored: default true, if false, this runs but not added to the scoreboard.
+scored: true
+
+# Scoring metadata
+scoring:
+  flag_type: static

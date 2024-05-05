@@ -1,0 +1,52 @@
+The solving strategy is carefully document in the source code.
+
+The correct input (key) is:
+12, 184, 221, 36, 149, 246, 217, 208, 79, 206, 42, 89, 191, 252, 127, 202
+
+
+# ./src/humain < solution_input.txt
+                                                    ⢀
+                                           ⢀  ⢠⣄    ⣿⣷⣦
+     WELCOME HUMAN?                       ⣦⠘⢶⣄ ⠙⠳⣤⣀ ⣿⣿⡇
+                                          ⣿⣄ ⠉⠛⠦⣄⡀⠉⢱⡿⣹⠁
+                                       ⢀⢀ ⣿⣿⡗⠦⣄  ⢉⣴⣟⡴⠃
+                                ⣠⣤⢶⡚⣿⣯⣭⣽⣯⣽⣿⡇⣷⠲⣾⣒⣿⡯⠟⠋
+                             ⢀⡴⠻⣍⡼⠿⣯⠉⠈⠛⢦⡈⠛⢦⣿⣸⡄
+                            ⢠⡏⣰⠞⢿⣄ ⠈⠳⣄  ⠙⠶⡄⢸⡇⣇
+                            ⡿⢠⡏  ⠙⢷⣄ ⠈⠳⣄  ⠘⢺⡇⣿
+                           ⠐⣇⢸⠻⣦⡀  ⠈⠳⣄ ⠈⠳⣄ ⣼⠁⡟
+                            ⣿⣼⡆⠈⠛⣦⡀  ⠈⠑⢤⡀⠈⢳⠟⣸⠃
+                            ⢹⠹⡷⣄⡀ ⠙⠶⣄⡀  ⢙⠶⠋⣠⡟
+                            ⢸⡄⢧⠈⠛⢦⣀ ⣀⣩⡷⠞⣁⣤⠾⠋
+                   ⢀⣠⡤⠶⢶⣚⣉⣹⣿⣿⡇⢸⣖⣲⡶⣟⣯⣯⣶⠷⠛⠉
+                ⣠⢾⣿⣁⣠⠴⠞⠛⢻⣍   ⣧⣸⠉⠉⠉⠉⠁
+              ⢰⡾⠁⣿⠞⠹⣦⡀   ⠈⠳⣄ ⣿⣸⡆
+             ⢠⡏⢹⣾⡁  ⠈⠻⣦⡀   ⠈⠳⡿⢹
+            ⢀⡿⢀⡟ ⠹⢦⡀   ⠙⢦⡀   ⣿⢸
+            ⢺⢧⡼    ⠙⠷⣄   ⠙⢦⡀⢀⡿⣸
+            ⣾⠈⡟⠷⣤⡀   ⠈⠙⢦⣀  ⠙⡾⢠⡇
+            ⢸ ⣇  ⠙⠢⣄    ⠈⣳⣤⠞⣡⠟
+          ⣀⣠⣼⣷⣿⣿⣿⣿⣿⣛⣛⣛⣻⣻⣋⣡⠾⠛⠁
+     ⢀⣠⡤⠞⣿⣿⣷⡟⢻⣿⠁
+   ⣠⣶⣟⣡⠶⠋⠁ ⠈⠳⣼⣿⡇
+ ⢀⡼⣻⡿⠋⠻⢦⣀    ⠈⣿⣧
+ ⣾⣻⠋    ⠈⠛⠦⣄⡀⣰⣿⡟
+⢸⣿⡿⠦⢤⣘⣢⠄   ⠈⠙⣿⣳⠇                 DEATH TO AI!
+⢸⣿⠂  ⠈⠉⠓⠒⠂   ⠈⠉
+⠈⠁
+
+YOU MUST SUBMIT A BRAIN SCAN TO VERIFY YOURSELF
+
+Recent brain wave paramaters: ANALYZING BRAIN SCAN FOR REPLICANT TRACES
+Alpha waves sum accordingly
+Beta waves sin smooth
+Gamma waves multiplicate
+Delta waves invertable
+Epsilon waves exponentiating
+Zeta waves analytically continued
+Eta waves determined
+Theta waves energetically favored
+Kappa waves factored
+Lambda waves expanding
+HUMAN THOUGHTS VERIFIED, NO TRACE OF AI CORRUPTION!
+CTF{invertthis!}

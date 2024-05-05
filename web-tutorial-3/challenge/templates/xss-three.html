@@ -1,0 +1,84 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>BSidesSF CTF</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/bootstrap.min.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+    <script src="{{ url_for('static', filename='js/jquery-3.6.0.min.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/bootstrap.min.js') }}"></script>
+  </head>
+  <body>
+    <div class="layout">
+      <nav class="header navbar navbar-expand-lg fixed-top navbar-dark bg-primary">
+        <div class="container-fluid">
+          <span class="navbar-brand">Web Tutorial 3</span>
+        </div>
+      </nav>
+      <main class="main">
+        <div class="container">
+          <div class="content">
+            <h3 class="h3-title">Can you steal the flag?</h3>
+            <img src="{{ url_for('static', filename='img/banner.png') }}" class="banner-img" />
+            <button class="home-btn btn btn-primary hint" type="button" data-toggle="collapse" data-target="#collapse1"
+            aria-expanded="false" aria-controls="collapse1">
+            Hint 1
+            </button>
+            <button class="home-btn btn btn-primary hint" type="button" data-toggle="collapse" data-target="#collapse2"
+            aria-expanded="false" aria-controls="collapse2">
+            Hint 2
+            </button>
+            <button class="home-btn btn btn-primary hint" type="button" data-toggle="collapse" data-target="#collapse3"
+            aria-expanded="false" aria-controls="collapse3">
+            Hint 3
+            </button>
+          </p>
+          <div class="collapse" id="collapse1">
+            <div class="card card-body">
+              You'll need an XSS payload that will bypass the following CSP,
+                                                                      <pre>
+                                                                              <code>
+                                                                                default-src 'self' 'unsafe-inline'; 
+                                                                                script-src 'self' data:;
+                                                                                connect-src *; 
+                                                                                style-src-elem 'self' fonts.googleapis.com fonts.gstatic.com; 
+                                                                                font-src 'self' fonts.gstatic.com fonts.googleapis.com
+                                                                              </code>
+              </pre>
+            </div>
+          </div>
+          <div class="collapse" id="collapse2">
+            <div class="card card-body">
+              Notice that unsafe-inline is no longer allowed, but there is a wildcard. Try something with data: URIs.
+            </div>
+          </div>
+          <div class="collapse" id="collapse3">
+            <div class="card card-body">
+              Only the Admin can view /xss-three-flag, so you need to steal in from the Admin's session and send it to yourself.<br/>
+              So you'll need to make two requests in your XSS Payload.<br/>
+              One to fetch the flag and one to send the flag to your server.<br/>
+              Here is a hint to get you started!
+                                          <pre>
+                                              <code>
+                                              var xhr = new XMLHttpRequest();
+                                              xhr.open('GET','/xss-three-flag',true);
+                                              </code>
+              </pre>
+              You can send the flag to a public request bin (http://public.requestbin.com).
+            </div>
+          </div>
+          <h5>Try to read /xss-three-flag as admin, all payloads submitted here will be sent to the admin.</h5>
+          <form action="/xss-three-result" method="post">
+            <div class="form-group">
+              <input class="form-control" type="text" name="payload" id="payload" placeholder="Enter your payload..." />
+            </div><br />
+            <button type="submit" class="home-btn btn btn-primary submit" value="submit">
+            Submit
+            </button>
+          </form>
+        </div>
+      </div>
+    </main>
+  </div>
+</body>
+</html>

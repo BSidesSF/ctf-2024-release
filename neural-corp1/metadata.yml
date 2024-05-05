@@ -1,0 +1,31 @@
+# This is the standard metadata for a challenge with a web component.
+# In terms of file structure, please also have the following:
+#
+# - A challenge/ folder with everything needed to create the challenge assets
+# - A distfiles/ folder which contains all files (or symlinks to files) that
+#   will be attached to the challenge
+# - A solution/ folder with a working solution to the challenge (or a README.md
+#   file documenting the solution)
+
+version: 'release'
+name: 'neural-corp1'
+author: 'Matthias Penner'
+flag: 'CTF{fun_w17h_c5rf}'
+description: |
+  Just a little fun with links. Maybe even some hidden features to play with.
+value: 1000 # Leave this as 1000 unless you have a reason to change it
+tags:
+  - 'Web'
+# This *must* be the port on which your service is listening inside the
+# container.  It *must* also return 200 for a GET / HTTP/1.1.
+port: 5000
+protocol: 'http' # accepted: http, https, tcp, udp
+notes: |
+  Private notes on deployment, setup, etc.
+replicas: 1
+
+webbot:
+  cookies:
+    - "session=.eJwtjjtuAzEMBe-i2oVISqLoyyzEHxIYSIBduzJ896hIOe9NMe9y5BnXV7k_z1fcyvHt5V6APCuG9zWbdLDOZG0kK0uFNXmzVo202TG9CkXnmTCHs9fhuH-JzNQByTA5MZYjNx4qKwBkLgI0crQqxgOzpYW3QPfttrJDXlec_zUb7TrzeP4-4mcPalpFgYYgdaQlbEtFkzrk4N0MPmg1LJ8__Uw_lQ.Zi2QXQ.AXRjeBq0Eh5YdBsduyOlGu4rXI0;URL=https://%(hostname)s/admin-panel;httpOnly;Secure;SameSite=None"
+  urls:
+    - "https://%(hostname)s/admin-panel"

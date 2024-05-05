@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="icon" href="https://getbootstrap.com/docs/4.0/assets/img/favicons/favicon.ico">
+
+    <title>Safer streets - TODAY!</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom styles for this template -->
+    <link href="main.css" rel="stylesheet">
+  <body>
+
+    <header>
+      <div class="bg-dark collapse" id="navbarHeader" style="">
+        <div class="container">
+          <div class="row">
+            <div class="col-sm-8 col-md-7 py-4">
+              <h4 class="text-white">About</h4>
+              <p class="text-muted">We've teamed up with surveillance companies around the world to make YOU safer, by tracking your every move!</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="navbar navbar-dark bg-dark box-shadow">
+        <div class="container d-flex justify-content-between">
+          <a href="/" class="navbar-brand d-flex align-items-center">
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="mr-2"><path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"></path><circle cx="12" cy="13" r="4"></circle></svg>
+            <strong>Safer Streets TODAY!</strong>
+          </a>
+          <button class="navbar-toggler collapsed" type="button" data-toggle="collapse" data-target="#navbarHeader" aria-controls="navbarHeader" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+        </div>
+      </div>
+    </header>
+
+    <main role="main">
+
+      <section class="jumbotron text-center">
+        <div class="container">
+          <h1 class="jumbotron-heading">See something? Say something!</h1>
+          <p class="lead text-muted">If you've seen <em>any</em> unsafe behavior, snap a photo of the offender and upload it here!</p>
+          <p class="lead text-muted">Be sure the "Safer Streets" code is clearly visible!</p>
+          <% if msg %>
+            <div class="alert alert-success" role="alert">
+              <p class="lead text-muted"><%=msg%></p>
+            </div>
+          <% end %>
+          <hr />
+          <p>
+            <form method="post" enctype="multipart/form-data">
+              <p>How fast were they going? <input type="text" name="speed" placeholder="Speed (MPH or KPH)" /></p>
+              <p>Photo with the Safer Streets code visible <input type="file" name="photo" /></p>
+              <p><input type="submit" value="Snitch!" /></p>
+            </form>
+          </p>
+        </div>
+      </section>
+    </main>
+
+    <footer class="text-muted">
+      <div class="container">
+        <p>Powered by Bootstrap!!</p>
+      </div>
+    </footer>
+
+    <script src="jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="popper.min.js"></script>
+    <script src="bootstrap.min.js"></script>
+    <script src="holder.min.js"></script>

@@ -1,0 +1,48 @@
+plugins {
+    alias(libs.plugins.androidApplication)
+}
+
+android {
+    namespace 'com.bsidessf.wishingwell'
+    compileSdk 34
+    packagingOptions{
+        resources.excludes.add("META-INF/*")
+    }
+    defaultConfig {
+        applicationId "com.bsidessf.wishingwell"
+        minSdk 28
+        targetSdk 34
+        versionCode 1
+        versionName "1.0"
+
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+}
+
+dependencies {
+
+    implementation libs.appcompat
+    implementation libs.material
+    implementation libs.activity
+    implementation libs.constraintlayout
+    testImplementation libs.junit
+    androidTestImplementation libs.ext.junit
+    androidTestImplementation libs.espresso.core
+    implementation 'com.google.api-client:google-api-client-android:2.4.0' exclude module: 'httpclient'
+    implementation platform('com.google.cloud:libraries-bom:26.37.0')
+    implementation 'com.google.cloud:google-cloud-pubsub'
+    implementation 'io.grpc:grpc-okhttp:1.63.0'
+    implementation 'io.grpc:grpc-stub:1.63.0'
+    compileOnly 'org.apache.tomcat:annotations-api:6.0.53' // necessary for Java 9+
+}

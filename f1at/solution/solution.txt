@@ -1,0 +1,38 @@
+Key is roman numerals I through XII:
+
+I:    H
+II:   UN
+III:  TED
+IV:   M
+V:    U
+VI:   S
+VII:  T
+VIII: ST
+IX:   O
+X:    P
+XI:   A
+XII:  I
+
+Key: huntedmuststopai
+
+Hint is alpha through nu:
+
+a: vi
+b: g
+g: e
+d: n
+e: e
+z: r
+n: e
+
+Hint: vigenere
+
+
+Ciphertext:
+
+JNS{bj_bao_otfm_hd_kmlj_n_lifdyl_rgn_ajsb_ocqx_mw_rlgf_sb}
+
+
+Using vigenere (for example on https://www.dcode.fr/vigenere-cipher)
+
+CTF{if_you_want_to_keep_a_secret_you_must_hide_it_from_ai}

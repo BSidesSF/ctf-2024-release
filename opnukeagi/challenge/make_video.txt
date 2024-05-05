@@ -1,0 +1,9 @@
+# run gen_video_frames() in ./galois_lfsr.pl to generate 120 images.
+
+# Convert those images to 24 fps video
+ffmpeg -framerate 1 -pattern_type glob -i "nuke_frame*.jpg" -c:v libx264 -r 24 out.mp4
+
+# mix in film grain video overlay
+ffmpeg -stream_loop -1 -i old_film_1080.mp4 -i out.mp4 -filter_complex "[0]format=rgba,colorchannelmixer=aa=0.25[fg];[1][fg]overlay=shortest=1[out]" -map '[out]' -c:v libx264 -crf 18 out_grain.mp4
+
+

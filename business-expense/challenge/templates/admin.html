@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Dashboard</title>
+
+    <link rel="stylesheet" href="static/style.css">
+    <script defer src="admin/static/admin.js"></script>
+</head>
+
+<body>
+    <h1>Admin Dashboard</h1>
+
+    <table class="editable" id="table">
+	    <thead>
+		<tr>
+			<th class="expense">
+				Expense Name
+			</th>
+			<th class="cost">
+				Cost
+			</th>
+			<th class="currency">
+				Currency Type
+			</th>
+		</tr>
+	    </thead>
+	    <tbody>
+		    {% for v in table_data %}
+		    <tr>
+			<td>
+				{{ v.expense | safe}}
+			</td>
+			<td>
+				{{ v.cost }}
+			</td>
+			<td>
+				{{ v.currency | safe}}
+			</td>
+			{% endfor %}
+	    </tbody>
+
+    </table>
+    <button id="approve" value="{{popID}}">Approve</button>
+    <button id="deny">Deny</button>
+
+
+    <script>
+	table = document.getElementById("expense-table");
+
+    </script>
+
+    <br>
+
+    <a href="{{url_for('logout')}}">Press here to logout</a>
+
+</body>
+
+</html>

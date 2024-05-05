@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registration | NeuralCorp</title>
+    <link rel="stylesheet" href="static/registration-styles.css">
+</head>
+<body>
+    <header>
+        <h1>Create new User</h1>
+    </header>
+    <main>
+        <div class="container">
+            <form class="registration-form" method="post">
+                <div class="input-group">
+                    <label for="username">Username</label>
+                    <input type="text" id="username" name="username" required>
+                </div>
+                <div class="input-group">
+                    <label for="password">Password</label>
+                    <input type="password" id="password" name="password" required>
+                </div>
+
+		<input type="hidden" name="token" value="{{token}}">
+                <button type="submit">Create</button>
+            </form>
+        </div>
+    </main>
+</body>
+</html>

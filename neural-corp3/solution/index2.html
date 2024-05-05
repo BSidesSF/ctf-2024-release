@@ -1,0 +1,17 @@
+<html>
+	<body>
+		<script>
+			var xhr = new XMLHttpRequest();
+			xhr.onreadystatechange = function() {
+				if (xhr.readyState == XMLHttpRequest.DONE) {
+					alert(xhr.responseText);
+				}
+			}
+
+			xhr.open('GET', 'http://172.17.0.2:5000/register')
+			xhr.withCredentials = true;
+			xhr.send();
+		</script>
+	</body>
+</html>
+

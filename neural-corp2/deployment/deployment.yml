@@ -1,0 +1,70 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: neural-corp2
+    tier: challenge
+  name: neural-corp2
+  namespace: default
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: neural-corp2
+  template:
+    metadata:
+      annotations:
+        apparmor.security.beta.kubernetes.io/defaultProfileName: runtime/default
+      labels:
+        app: neural-corp2
+        networkpolicy: allow_egress
+        tier: challenge
+    spec:
+      automountServiceAccountToken: false
+      containers:
+      - env: []
+        image: us-west1-docker.pkg.dev/bsides-sf-ctf-2024/challenges/neural-corp2:20240503-003954
+        name: neural-corp2
+        ports:
+        - containerPort: 5000
+          protocol: TCP
+        resources:
+          limits:
+            cpu: '1'
+            memory: 1Gi
+          requests:
+            cpu: 50m
+            memory: 32Mi
+        securityContext:
+          allowPrivilegeEscalation: false
+          capabilities:
+            add: []
+          runAsNonRoot: true
+        volumeMounts: []
+      - env:
+        - name: DEBUG
+          value: 'true'
+        - name: COOKIES
+          value: session=.eJwtjs1uAjEQg18lyhlVySSbSXiK3iuEJvMDqJStNssJ8e7NoSfrsy3LL3-2O42rDn_8enm3T_E_OgZd1B_8511pqLuvF3d7uH11xDxDt19vw_3Ozoc_vU-HObLpuPrjvj110k380cckFkBloZrbEnnBxLkYdmwhUsXJPXQ1rguYhJZ0wWqxFkEJRWDmTc2sl2gYKxooCWDG0htpjK1SisBJgENjLGDZWCUriMxunvfPz6Hb_5uJPDY77-u3PqYRKEeJUDNL6hKxMUEE6FBRM5BySYmaBv_-Azl_Vr8.Zi2dqQ.e0u2YA3h5t_g-;URL=https://neural-corp2-d827bcc1.challenges.bsidessf.net/admin-panel;httpOnly
+        - name: TARGET_URIS
+          value: http://127.0.0.1:5000/admin-panel
+        - name: PORT
+          value: '3000'
+        image: us-west1-docker.pkg.dev/bsides-sf-ctf-2024/challenges/webbot:latest
+        name: webbot
+        resources:
+          limits:
+            cpu: '1'
+            memory: 512Mi
+          requests:
+            cpu: 80m
+            memory: 128Mi
+        securityContext:
+          capabilities:
+            add:
+            - SYS_ADMIN
+      enableServiceLinks: false
+      securityContext:
+        seccompProfile:
+          type: RuntimeDefault
+      volumes: []

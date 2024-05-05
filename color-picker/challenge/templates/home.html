@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>Color Picker</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="{{ url_for('static', filename='css/bootstrap.min.css') }}">
+        <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    </head>
+    <body>
+        <div class="layout">
+            <nav class="header navbar navbar-expand-lg fixed-top navbar-dark bg-primary">
+                <div class="container-fluid">
+                    <span class="navbar-brand">Color Picker</span>
+                </div>
+            </nav>
+            <main class="main">
+                <div class="container">
+                    <div class="content">
+                        <h1>Pick a shade</h1>
+                        <form action="/shade">
+                            <select name="color" id="color" class=form-select>
+                                <option value="pink">Pink</option>
+                                <option value="purple">Purple</option>
+                                <option value="red">Red</option>
+                                <option value="orange">Orange</option>
+                                <option value="yellow">Yellow</option>
+                                <option value="green">Green</option>
+                                <option value="cyan">Cyan</option>
+                                <option value="blue">Blue</option>
+                                <option value="brown">Brown</option>
+                                <option value="white">White</option>
+                                <option value="grey">Grey</option>
+                            </select>
+                            <button type="submit" value="Submit" class="btn btn-primary">Submit</button>
+                        </form>
+                    </div>
+                </div>
+            </main>
+        </body>
+    </html>

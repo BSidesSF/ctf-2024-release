@@ -1,0 +1,74 @@
+
+Here is the grid purly with the 3,1 transposition wrapping around a torus:
+
+i e s l h t h t s s t a g r d n l n l
+s a e h w f a a w s t t k i f e e o d
+o n a a i t a o a w t o t h e n s e s
+c w i r o i f m o v r i o g t o e m o
+f s w r c n a t c e a s e d l f o h s
+e o e a f n i o h l f o w k t g a s a
+i a i s u n i r b t m o l o m o e o o
+a p n m f i h s d l o y i p p h r p r
+g a d b t e u e s o a y s m a c a e o
+n t p e n C r h t s w o r n o a t l a
+h l l i h e t i T e e o t o b r d u f
+t t e e h t e a w t e F a m g n r e i
+d y b w h w v u h s t i h s { k i r o
+n e t i h l e e o e m a w y l e b t t
+u h h t a k n u y n s r r a t o o l f
+u b a i e r h t n t m w t e d y n t r
+k h k a e i l f o e l o o a r y m i s
+e s t i e i r l l d i u y e w a n o f
+s n o s t a n f n e o s t r g e n t i
+g h s } g u s h r d a g a s a h s h a
+t t r t a y i i r a e t a i o b t f i
+
+3,1 means each letter is written over three and down one.
+
+Here is "i have" in the first 5 rows of the block above:
+i
+      h
+            a
+                  v
+                        e
+
+This 3,1 grid is extremly similar to the 2,1 grid used in the first
+block of the Zodiac 340 cipher:
+
+https://blog.wolfram.com/2021/03/24/the-solution-of-the-zodiac-killers-340-character-cipher/
+
+Importantly the plaintext has been constructed with a few words
+repeated many times. Specifically "failsafe word" is repeated 4 times.
+Here is the grid just with "failesafe word" highlighted:
+. e . . . . . . . . . . . . . . l . .
+s . . . w f . . . . . . . . . . . . .
+. . . a . . . o a . . . . . . . . . .
+. . . . . . f . . . r i . . . . . . .
+f . . . . . . . . e . . . d l . . . .
+. . . a . . . . . . . . w . . . . s .
+. a . . . . i . . . . . . . . o . . .
+. . . . f . . . . l . . . . . . . . r
+. . d . . . . e . . . . s . . . . . .
+. . . . . . . . . . w . . . . a . . .
+. . . . . . . . . . . . . o . . . . f
+. . e . . . . . . . . . . . . . r . .
+d . . . . w . . . . . . . . . . . . .
+. . . . . . . . o . . . . . . . . . .
+. . . . . . . . . . . r . . . . . . f
+. . a . . . . . . . . . . . d . . . .
+. . . . . i . . . . . . . . . . . . .
+. . . . . . . . l . . . . . . . . . .
+. . . . . . . f . . . s . . . . . . .
+. . . . . . . . . . a . . . a . . . .
+. . . . . . . . . . . . . i . . . f .
+
+This repeated structure can be used to identify the 3,1 torus wrapping
+and unwrap the entire grid into one long string.
+
+Our best bet is to show players these repeated patterns so that they can undo
+the transposition and reduce the grid to just a substitution cipher.
+
+We can also show them the C, T, F, { and give them the CTF letters
+which will get them started on the substitution portion of the cipher and further
+hint at the 3,1 transposition.
+

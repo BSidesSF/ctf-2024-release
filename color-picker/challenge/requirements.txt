@@ -1,0 +1,5 @@
+flask
+requests
+flask-csp
+google-auth
+oauth2client

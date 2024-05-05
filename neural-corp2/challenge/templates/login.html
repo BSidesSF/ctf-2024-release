@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login | NeuralCorp</title>
+    <link rel="stylesheet" href="static/login-styles.css">
+</head>
+<body>
+    <div class="container">
+        <form class="login-form" method="post">
+            <h1>Login to NeuralCorp</h1>
+	    {{ form.hidden_tag() }}
+            <div class="input-group">
+                <label for="username">Username</label>
+		{{ form.username }}
+            </div>
+            <div class="input-group">
+                <label for="password">Password</label>
+		{{ form.password }}
+            </div>
+	    {{ form.submit }}
+        </form>
+    </div>
+</body>
+</html>

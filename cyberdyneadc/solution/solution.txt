@@ -1,0 +1,17 @@
+The disk image and error log provided has many more errors than actual
+unreable sectors. This is common and realistic since most drives when
+read "normally" don't read one sector at a time but read a whole run
+of sectors (aka read-ahead). Requesting a read that extends into a bad
+sector can make the whole read fail.  Plotting the error sectors in an
+image shows enough that it's clear the flag is in the scratches but
+obscures too much to make the flag directly readable.
+
+The solve.pl script tries to read each error sector to figure out
+which ones are "true" errors. When those are plotted the flag becomes
+easily readable.
+
+
+$ ./solve.pl > /tmp/flag.data
+$ convert -size 512x256 -depth 8 gray:/tmp/flag.data /tmp/flag.png
+
+CTF{save_humanity}

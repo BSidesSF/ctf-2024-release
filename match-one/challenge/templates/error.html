@@ -1,0 +1,17 @@
+<html>
+
+<head>
+    <title> Memory Match </title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/bootstrap.min.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+</head>
+
+<body class="text-center form-body">
+    <div class="box">
+        <img class="error-img" src="{{ url_for('static', filename='images/oops.gif') }}" />
+        <h4> {{ error }} </h4>
+        <a href="/login">Return login</a> Or <a href="/home">Reset Game</a>
+    </div>
+</body>
+
+</html>

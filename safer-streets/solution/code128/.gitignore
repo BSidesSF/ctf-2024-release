@@ -1,0 +1,9 @@
+# Ignore build products
+/*.o
+/*.png
+/code128png
+/*.so*
+/*.a
+
+# Ignore astyle backup files
+/*.orig

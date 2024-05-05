@@ -1,0 +1,66 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: xzsupply
+    tier: challenge
+  name: xzsupply
+  namespace: default
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: xzsupply
+  template:
+    metadata:
+      annotations:
+        apparmor.security.beta.kubernetes.io/defaultProfileName: runtime/default
+      labels:
+        app: xzsupply
+        networkpolicy: allow_egress
+        tier: challenge
+    spec:
+      automountServiceAccountToken: false
+      containers:
+      - env:
+        - name: GBDZX
+          value: S
+        image: us-west1-docker.pkg.dev/bsides-sf-ctf-2024/challenges/xzsupply:20240504-060720-mod
+        name: xzsupply
+        ports:
+        - containerPort: 6666
+          protocol: TCP
+        resources:
+          limits:
+            cpu: '1'
+            memory: 1Gi
+          requests:
+            cpu: 50m
+            memory: 32Mi
+        securityContext:
+          allowPrivilegeEscalation: false
+          capabilities:
+            add: []
+          runAsNonRoot: true
+        volumeMounts:
+        - mountPath: /home/ctf/flag.txt
+          name: xzsupply-flag-secret-vol
+          readOnly: true
+          subPath: flag.txt
+      enableServiceLinks: false
+      securityContext:
+        seccompProfile:
+          type: RuntimeDefault
+      volumes:
+      - name: xzsupply-flag-secret-vol
+        secret:
+          secretName: xzsupply-flag-secret
+---
+apiVersion: v1
+data:
+  flag.txt: !!binary |
+    UTFSR2UzZG9ZWFJmWVhKbFgybG1kVzVqYzE5aGJubDNZWGsrSmpWOQ==
+kind: Secret
+metadata:
+  name: xzsupply-flag-secret
+type: Opaque

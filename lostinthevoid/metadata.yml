@@ -1,0 +1,21 @@
+# This is the standard metadata for a challenge with a server-side component.
+# In terms of file structure, please also have the following:
+#
+# - A challenge/ folder with everything needed to create the challenge assets
+# - A distfiles/ folder which contains all files (or symlinks to files) that
+#   will be attached to the challenge
+# - A solution/ folder with a working solution to the challenge (or a README.md
+#   file documenting the solution)
+
+version: 'beta1'
+name: 'lostinthevoid'
+author: 'symmetric'
+flag: 'CTF{in_space_no_one_can_hear_you_scream}'
+description: |
+  In the boundless expanse of the null sea, adrift you stand, gazing out, feeling the weight of an ancient malevolent gaze upon your soul. Drifting ever farther, hope dwindles, swallowed whole by the encroaching tendrils of malevolence that now ensnare you.
+
+value: 1000 # Leave this as 1000 unless you have a reason to change it
+tags:
+  - 'Forensics'
+notes: |
+  Private notes on deployment, setup, etc.

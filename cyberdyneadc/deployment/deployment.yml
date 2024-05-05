@@ -1,0 +1,74 @@
+apiVersion: v1
+kind: ServiceAccount
+metadata:
+  name: cyberdyneadc-podperconn
+  namespace: podperconn
+---
+apiVersion: v1
+data:
+  container.yml: "apiVersion: apps/v1\nkind: Deployment\nmetadata:\n  labels:\n  \
+    \  app: cyberdyneadc\n    tier: challenge\n  name: cyberdyneadc\n  namespace:\
+    \ podperconn\nspec:\n  replicas: 1\n  selector:\n    matchLabels:\n      app:\
+    \ cyberdyneadc\n  template:\n    metadata:\n      annotations:\n        apparmor.security.beta.kubernetes.io/defaultProfileName:\
+    \ runtime/default\n      labels:\n        app: cyberdyneadc\n        networkpolicy:\
+    \ allow_egress\n        tier: challenge\n    spec:\n      automountServiceAccountToken:\
+    \ false\n      containers:\n      - env: []\n        image: us-west1-docker.pkg.dev/bsides-sf-ctf-2024/challenges/cyberdyneadc:20240503-040233-mod\n\
+    \        name: cyberdyneadc\n        ports:\n        - containerPort: 1800\n \
+    \         protocol: TCP\n        resources:\n          limits:\n            cpu:\
+    \ '1'\n            memory: 1Gi\n          requests:\n            cpu: 50m\n  \
+    \          memory: 32Mi\n        securityContext:\n          allowPrivilegeEscalation:\
+    \ false\n          capabilities:\n            add: []\n          runAsNonRoot:\
+    \ true\n        volumeMounts: []\n      enableServiceLinks: false\n      securityContext:\n\
+    \        seccompProfile:\n          type: RuntimeDefault\n      volumes: []\n"
+kind: ConfigMap
+metadata:
+  name: cyberdyneadc-podperconn-configs
+  namespace: podperconn
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: cyberdyneadc-podperconn
+  name: cyberdyneadc-podperconn
+  namespace: podperconn
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: cyberdyneadc-podperconn
+  template:
+    metadata:
+      labels:
+        app: cyberdyneadc-podperconn
+    spec:
+      containers:
+      - command:
+        - /opt/podperconn
+        - --deployment=/config/container.yml
+        - --namespace=podperconn
+        - --listen-port=1800
+        image: docker.io/matir/podperconn:latest
+        name: podperconn
+        ports:
+        - containerPort: 1800
+        volumeMounts:
+        - mountPath: /config
+          name: configs
+      - command:
+        - ttyd
+        - --writable
+        - --port
+        - '80'
+        - socat
+        - file:/dev/tty,raw,echo=0
+        - tcp:127.0.0.1:1800
+        image: us-west1-docker.pkg.dev/bsides-sf-ctf-2024/challenges/ttyd:latest
+        name: ttyd
+        ports:
+        - containerPort: 80
+      serviceAccountName: cyberdyneadc-podperconn
+      volumes:
+      - configMap:
+          name: cyberdyneadc-podperconn-configs
+        name: configs
